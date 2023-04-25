@@ -75,13 +75,12 @@ export default function Login() {
                     <form onSubmit={handleLogin} className='login-form'>
                         <label>
                             Email ID:
-                            <input type='text' value={username} onChange={handleUsernameChange} />
+                            <input type='text' value={username} onChange={handleUsernameChange} required='required'/>
                         </label>
                         <label>
                             Password:
                             <input type='password' value={password} onChange={handlePasswordChange} />
                         </label>
-                        
                         <div className='buttons-container'>
                             <button type='submit' onClick={handleLogin}>Login</button>   
                             <button onClick={handleRegister}>Register</button>
