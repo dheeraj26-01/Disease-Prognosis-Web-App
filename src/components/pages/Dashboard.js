@@ -4,13 +4,14 @@ import './Dashboard.css';
 const Dashboard = () => {
   return (
     <div className='dashboard'>
-      <div classname='patient-info-container'>
+      <div className='patient-info-container'>
         <h2>Patient Information</h2>
         <p><strong>Name:</strong> John Doe</p>
         <p><strong>Age:</strong> 35</p>
         <p><strong>Weight:</strong> 75 kg</p>
       </div>
-      <div classname='symptoms-form-container'>
+
+      <div className='symptoms-form-container'>
         <form className='symptoms-form'>
           <label htmlFor='symptom1'>Symptom 1:</label>
           <select id='symptom1' name='symptom1'>
@@ -65,8 +66,12 @@ const Dashboard = () => {
           <button type='submit'>Submit</button>
         </form>
       </div>
+
+      <div className='map-container'>
+        <h2>Map</h2>
+        <p>Map goes here</p>
+      </div>
     </div>
   );
-};
-
-export default Dashboard;
+  };
+  export default Dashboard

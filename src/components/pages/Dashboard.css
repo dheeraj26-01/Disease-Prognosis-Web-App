@@ -1,66 +1,75 @@
-  .dashboard {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    padding: 20px;
-  }
-  
-  .dashboard h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    justify-content: left;
-  }
-  
-  .symptoms-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    max-width: 500px;
-  }
-  
-  .symptoms-form label {
-    color: black;
-    margin-right: 10px;
-    font-size: 1.2rem;
-  }
-  
-  .symptoms-form select {
-    font-size: 1rem;
-    padding: 5px;
-    margin-right: 20px;
-  }
-  
-  .symptoms-form button {
-    font-size: 1.2rem;
-    padding: 5px 20px;
-    margin-top: 20px;
-    background-color: #0077ff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .symptoms-form button:hover {
-    background-color: #005ae6;
-  }
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
 
-  .patient-info-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    margin-bottom: 20px;
-  }
+.patient-info-container {
+  width: 45%;
+  height: 310px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
+}
+
+.symptoms-form-container {
+  width: 45%;
+  background-color: #fff;
+  height: 310px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.symptoms-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.symptoms-form label {
+  width: 30%;
+  margin-bottom: 10px;
+  color: black;
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.symptoms-form select {
+  width: 60%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+button[type='submit'] {
+  background-color: #007bff;
+  color: #fff;
+  margin-top: 20px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.symptoms-form button:hover {
+  background-color: #005ae6;
+}
+
+.map-container {
+  width: 100%;
+  height: 400px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

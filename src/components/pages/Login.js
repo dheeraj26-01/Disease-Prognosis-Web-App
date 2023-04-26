@@ -82,7 +82,7 @@ export default function Login() {
                             <input type='password' value={password} onChange={handlePasswordChange} />
                         </label>
                         <div className='buttons-container'>
-                            <button type='submit' onClick={handleLogin}>Login</button>   
+                            <button type='submit-login' onClick={handleLogin}>Login</button>   
                             <button onClick={handleRegister}>Register</button>
                             <button className='googleBtn' onClick={handleGoogleLogin}><FcGoogle/></button>
                             
