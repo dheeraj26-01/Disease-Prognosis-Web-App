@@ -1,8 +1,80 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Dashboard.css';
 // import GoogleMap from './GoogleMap';
 
+
+const doctors = [
+  {
+    name: 'Dr. John Smith',
+    age: 45,
+    experience: '15 years',
+    expertise: 'Cardiology',
+    contact: {
+      phone: '123-456-7890',
+      email: 'john.smith@cardiology.com'
+    },
+    image: 'https://randomuser.me/api/portraits/men/1.jpg'
+  },
+  {
+    name: 'Dr. Maria Garcia',
+    age: 40,
+    experience: '10 years',
+    expertise: 'Gastroenterology',
+    contact: {
+      phone: '123-456-7890',
+      email: 'maria.garcia@gastroenterology.com'
+    },
+    image: 'https://randomuser.me/api/portraits/women/1.jpg'
+  },
+  {
+    name: 'Dr. William Lee',
+    age: 50,
+    experience: '20 years',
+    expertise: 'Neurology',
+    contact: {
+      phone: '123-456-7890',
+      email: 'william.lee@neurology.com'
+    },
+    image: 'https://randomuser.me/api/portraits/men/2.jpg'
+  },
+  {
+    name: 'Dr. Elizabeth Brown',
+    age: 42,
+    experience: '12 years',
+    expertise: 'Dermatology',
+    contact: {
+      phone: '123-456-7890',
+      email: 'elizabeth.brown@dermatology.com'
+    },
+    image: 'https://randomuser.me/api/portraits/women/2.jpg'
+  },
+  {
+    name: 'Dr. David Martinez',
+    age: 55,
+    experience: '25 years',
+    expertise: 'Orthopedics',
+    contact: {
+      phone: '123-456-7890',
+      email: 'david.martinez@orthopedics.com'
+    },
+    image: 'https://randomuser.me/api/portraits/men/3.jpg'
+  }
+];
+
+const getRandomDoctor = () => {
+  const randomIndex = Math.floor(Math.random() * doctors.length);
+  return doctors[randomIndex];
+};
+
 const Dashboard = () => {
+  const [doctor, setDoctor] = useState(null);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const randomDoctor = getRandomDoctor();
+    setDoctor(randomDoctor);
+  };
+
   return (
     <div className='dashboard'>
       <div className='patient-info-container'>
@@ -18,7 +90,7 @@ const Dashboard = () => {
       </div>
 
       <div className='symptoms-form-container'>
-        <form className='symptoms-form'>
+        <form className='symptoms-form' onSubmit={handleSubmit}>
           <label htmlFor='symptom1'>Symptom 1:</label>
           <select id='symptom1' name='symptom1'>
             <option value=''>None</option>
@@ -80,8 +152,20 @@ const Dashboard = () => {
       </div>
 
       <div className='doctor-container'>
-        <h2>Doctor</h2>
-        <p>Doctor goes here</p>
+        {doctor && (
+          <div>
+            <img src={doctor.image} alt='Doctor' />
+            <p>Name: {doctor.name}</p>
+            <p>Age: {doctor.age}</p>
+            <p>Experience: {doctor.experience}</p>
+            <p>Area of Expertise: {doctor.expertise}</p>
+            <p>Contact:</p>
+            <ul>
+              <li>Phone: {doctor.contact.phone}</li>
+              <li>Email: {doctor.contact.email}</li>
+            </ul>
+          </div>
+        )}
       </div>
 
     </div>

@@ -6,7 +6,7 @@
 //   useEffect(() => {
 //     if (!window.google) {
 //       const script = document.createElement("script");
-//       script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.AIzaSyBNrx56GVWeH7hHUshOlh8pcXhJ8fGfW0M}&libraries=places`;
+//       script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.AIzaSyA9xvF5Bwoje9eQolevrzG28Fqegbd_Yik}&libraries=places`;
 //       script.onload = initMap;
 //       document.head.appendChild(script);
 //     } else {
