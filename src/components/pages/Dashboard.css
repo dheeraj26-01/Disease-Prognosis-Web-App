@@ -7,6 +7,8 @@
 }
 
 .patient-info-container {
+  display: flex;
+  align-items: center;
   width: 45%;
   height: 310px;
   background-color: #fff;
@@ -14,6 +16,24 @@
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   margin-right: 20px;
+}
+
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  margin-right: 20px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.patient-information {
+  flex: 1;
 }
 
 .symptoms-form-container {
@@ -63,11 +83,25 @@ button[type='submit'] {
   background-color: #005ae6;
 }
 
-.map-container {
+.map-container-dashboard {
   width: 100%;
   height: 400px;
   background-color: #fff;
   padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.doctor-container {
+  width: 100%;
+  height: 400px;
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
