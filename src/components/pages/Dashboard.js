@@ -153,17 +153,22 @@ const Dashboard = () => {
 
       <div className='doctor-container'>
         {doctor && (
-          <div>
-            <img src={doctor.image} alt='Doctor' />
-            <p>Name: {doctor.name}</p>
-            <p>Age: {doctor.age}</p>
-            <p>Experience: {doctor.experience}</p>
-            <p>Area of Expertise: {doctor.expertise}</p>
-            <p>Contact:</p>
-            <ul>
-              <li>Phone: {doctor.contact.phone}</li>
-              <li>Email: {doctor.contact.email}</li>
-            </ul>
+          <div className='doctor-info'>
+            <div className='doctor-info-left'>
+        <img src={doctor.image} alt='Doctor' />
+        <p>{doctor.name}</p>
+        <p>{doctor.age} years old</p>
+        <p>{doctor.experience} experience</p>
+      </div>
+      <div className='doctor-info-right'>
+        <p>Area of Expertise:</p>
+        <p>{doctor.expertise}</p>
+        <p>Contact:</p>
+        <ul>
+          <li>Phone: {doctor.contact.phone}</li>
+          <li>Email: {doctor.contact.email}</li>
+        </ul>
+      </div>
           </div>
         )}
       </div>

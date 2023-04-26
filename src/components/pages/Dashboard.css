@@ -103,14 +103,61 @@ button[type='submit'] {
 }
 
 .doctor-container {
-  width: 100%;
+  width: 70%;
   height: 400px;
-  background-color: #fff;
-  padding: 20px;
-  margin-top: 20px;
+  background: linear-gradient(to right, #56CCF2, #2F80ED);
+  padding: 40px;
+  margin: 20px auto;
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.doctor-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.doctor-info-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 30px;
+}
+
+.doctor-info-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: #fff;
+}
+
+.doctor-info img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.doctor-info p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.doctor-info ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.doctor-info ul li {
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 5px;
 }
