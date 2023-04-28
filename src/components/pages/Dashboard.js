@@ -66,27 +66,31 @@ const getRandomDoctor = () => {
   return doctors[randomIndex];
 };
 
+
+
 const Dashboard = () => {
   const [doctor, setDoctor] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const randomDoctor = getRandomDoctor();
     setDoctor(randomDoctor);
+    setSubmitted(true);
   };
 
   return (
     <div className='dashboard'>
       <div className='patient-info-container'>
-      <div className='profile-photo'>
-      <img src='https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=' alt='Patient Profile' />
-      </div>
-      <div className='patient-information'>
-      <p><strong>Name:</strong> John Doe</p>
-      <p><strong>Age:</strong> 35</p>
-      <p><strong>Weight:</strong> 75 kg</p>
-      <p><strong>Gender:</strong> Male</p>
-      </div>
+        <div className='profile-photo'>
+          <img src='https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=' alt='Patient Profile' />
+        </div>
+        <div className='patient-information'>
+          <p><strong>Name:</strong> John Doe</p>
+          <p><strong>Age:</strong> 35</p>
+          <p><strong>Weight:</strong> 75 kg</p>
+          <p><strong>Gender:</strong> Male</p>
+        </div>
       </div>
 
       <div className='symptoms-form-container'>
@@ -150,30 +154,30 @@ const Dashboard = () => {
         <p>Map goes here</p>
         {/* <GoogleMap /> */}
       </div>
-
-      <div className='doctor-container'>
-        {doctor && (
-          <div className='doctor-info'>
-            <div className='doctor-info-left'>
-        <img src={doctor.image} alt='Doctor' />
-        <p>{doctor.name}</p>
-        <p>{doctor.age} years old</p>
-        <p>{doctor.experience} experience</p>
-      </div>
-      <div className='doctor-info-right'>
-        <p>Area of Expertise:</p>
-        <p>{doctor.expertise}</p>
-        <p>Contact:</p>
-        <ul>
-          <li>Phone: {doctor.contact.phone}</li>
-          <li>Email: {doctor.contact.email}</li>
-        </ul>
-      </div>
-          </div>
-        )}
-      </div>
-
+      {submitted && (
+        <div className='doctor-container'>
+          {doctor && (
+            <div className='doctor-info'>
+              <div className='doctor-info-left'>
+                <img src={doctor.image} alt='Doctor' />
+                <p>{doctor.name}</p>
+                <p>{doctor.age} years old</p>
+                <p>{doctor.experience} experience</p>
+              </div>
+              <div className='doctor-info-right'>
+                <p>Area of Expertise:</p>
+                <p>{doctor.expertise}</p>
+                <p>Contact:</p>
+                <ul>
+                  <li>Phone: {doctor.contact.phone}</li>
+                  <li>Email: {doctor.contact.email}</li>
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
-  };
-  export default Dashboard
+};
+export default Dashboard
