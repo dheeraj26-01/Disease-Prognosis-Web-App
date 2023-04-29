@@ -3,6 +3,7 @@ import '../App.css'
 import { Button } from './Button'
 import './HeroSection.css'
 import Fade from 'react-reveal/Fade';
+import Typewriter from "typewriter-effect";
 
 function HeroSection() {
   return (
@@ -10,8 +11,21 @@ function HeroSection() {
         <video src='videos/video-3.mp4' autoPlay loop muted />
         <Fade bottom>
         <h1>Get Checked Up</h1>
-        <p>Prioritize your health</p>
         </Fade>
+        <div className='hero-container-typed'>
+        <Typewriter
+         onInit={(typewriter)=> {
+           
+           typewriter
+           .typeString("Prioritize your health")
+           .pauseFor(1000)
+           .deleteAll()
+           .typeString("A little self-care today can keep the doctors away")
+           .pauseFor(1000)
+           .start()
+          }}
+          />
+          </div>
 
         <Fade big>
         <div className='hero-btns'>
