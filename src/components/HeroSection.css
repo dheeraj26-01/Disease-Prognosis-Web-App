@@ -5,7 +5,7 @@ video {
     position: absolute;
     z-index: -1;
   }
-  
+
   .hero-container {
     /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
     height: 100vh;
@@ -24,12 +24,11 @@ video {
     margin-top: -100px;
   }
   
-  .hero-container > p {
+  .hero-container-typed {
     margin-top: 8px;
     color: #fff;
     font-size: 32px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-      'Lucida Sans', Arial, sans-serif;
+    align-items: center;
   }
 
   .hero-btns {
@@ -68,4 +67,9 @@ video {
       .btn {
         width: 100%;
       }
-    } 
+
+      .hero-container-typed {
+        max-width: 70%;
+        text-align: center;
+      }
+    }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../../App.css';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
-import {FcGoogle} from 'react-icons/fc'
+import { FcGoogle } from 'react-icons/fc'
 
 
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -36,27 +36,27 @@ export default function Login() {
         // login
         signInWithEmailAndPassword(auth, username, password)
             .then((userCredential) => {
-            console.log(userCredential);
-            navigate('/dashboard')
-            
-        })
+                console.log(userCredential);
+                navigate('/dashboard')
+
+            })
             .catch((error) => {
-            console.log(error);
-        });
-      console.log("loggedin")
-        
+                console.log(error);
+            });
+        console.log("loggedin")
+
     };
 
     const handleGoogleLogin = (event) => {
 
         signInWithPopup(auth, provider)
-        .then((userCredential) => {
-            console.log(userCredential);
-            navigate('/dashboard')
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+            .then((userCredential) => {
+                console.log(userCredential);
+                navigate('/dashboard')
+            })
+            .catch((error) => {
+                console.log(error);
+            });
         console.log("loggedin")
     }
 
@@ -70,28 +70,33 @@ export default function Login() {
         <div className='login-page'>
             <div className='login-container'>
                 <video className='login-video' src='videos/video-1.mp4' autoPlay muted loop></video>
+                <div className='form-half-container'>
+                    <h2 className='welcome'>Welcome To Our Website</h2>
                 <div className='login-form-container'>
                     <h2 className='login-header'>Sign In</h2>
                     <form onSubmit={handleLogin} className='login-form'>
                         <label>
                             Email ID:
-                            <input type='text' value={username} onChange={handleUsernameChange} />
+                            <input type='text' value={username} onChange={handleUsernameChange} required='required' />
                         </label>
                         <label>
                             Password:
                             <input type='password' value={password} onChange={handlePasswordChange} />
                         </label>
-                        
                         <div className='buttons-container'>
-                            <button type='submit' onClick={handleLogin}>Login</button>   
+                            <button type='submit-login' onClick={handleLogin}>Login</button>
                             <button onClick={handleRegister}>Register</button>
-                            <button className='googleBtn' onClick={handleGoogleLogin}><FcGoogle/></button>
-                            
+                            <button className='googleBtn' onClick={handleGoogleLogin}><FcGoogle /></button>
+
                         </div>
                     </form>
                     <AuthDetails />
                 </div>
+                </div>
             </div>
         </div>
     );
+
 }
+
+
