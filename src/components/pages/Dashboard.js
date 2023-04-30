@@ -145,6 +145,12 @@ const Dashboard = () => {
             <option value='shortness-of-breath'>Shortness of breath</option>
           </select>
 
+          <label htmlFor='result'>Result:</label>
+          <div style={{ width: '300px', height: '50px', border: '1px solid black', padding: '5px' ,borderRadius: '10px'}}>
+            <p id='result'>Display result here</p>
+          </div>
+         
+
           <button type='submit'>Submit</button>
         </form>
       </div>
