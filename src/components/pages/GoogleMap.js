@@ -6,8 +6,10 @@ function GoogleMap() {
   useEffect(() => {
     if (!window.google) {
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.AIzaSyA9xvF5Bwoje9eQolevrzG28Fqegbd_Yik}&libraries=places`;
-      script.onload = initMap;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.AIzaSyA10RZWnPnm4knhef6_rcgZuoBpZjbG63Q}&libraries=places&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      window.initMap = initMap;
       document.head.appendChild(script);
     } else {
       initMap();
@@ -34,7 +36,7 @@ function GoogleMap() {
           const request = {
             location,
             radius: 5000,
-            type: ["hospital"],
+            type: ["hospital", "clinics", "health"],
           };
 
           service.nearbySearch(request, (results, status) => {
