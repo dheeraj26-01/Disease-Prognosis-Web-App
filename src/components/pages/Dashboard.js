@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Dashboard.css';
-// import GoogleMap from './GoogleMap';
+import GoogleMap from './GoogleMap';
 
 
 const doctors = [
@@ -152,7 +152,7 @@ const Dashboard = () => {
       <div className='map-container-dashboard'>
         <h2>Map</h2>
         <p>Map goes here</p>
-        {/* <GoogleMap /> */}
+        <GoogleMap />
       </div>
       {submitted && (
         <div className='doctor-container'>
