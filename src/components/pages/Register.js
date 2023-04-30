@@ -14,6 +14,7 @@ export default function Register() {
     const [weight, setWeight] = useState('');
     const [gender, setGender] = useState('');
     const [height, setHeight] = useState('');
+    const [sleepPattern, setSleepPatternChange] = useState('');
     const [smokingHabit, setSmokingHabit] = useState('');
     const [alcoholConsumption, setAlcoholConsumption] = useState('');
     const [username, setUsername] = useState('');
@@ -44,6 +45,10 @@ export default function Register() {
 
     const handleGenderChange = (event) => {
         setGender(event.target.value);
+    };
+
+    const handleSleepPatternChange = (event) => {
+        setSleepPatternChange(event.target.value);
     };
 
     const handleConfirmPassword = (event) => {
@@ -90,70 +95,92 @@ export default function Register() {
                 <div className='register-form-container'>
                     <h2 className='register-header'>Create Account</h2>
                     <form onSubmit={handleLogin} className='register-form'>
-                        <label>
-                            First Name:
-                            <input type='text' value={firstName} onChange={handleFirstNameChange} />
-                        </label>
-                        <label>
-                            Last Name:
-                            <input type='text' value={lastName} onChange={handleLastNameChange} />
-                        </label>
-                        <label>
-                            Gender:
-                            <select value={gender} onChange={handleGenderChange}>
-                                <option value=''>--Please choose an option--</option>
-                                <option value='male'>Male</option>
-                                <option value='female'>Female</option>
-                                <option value='other'>Other</option>
-                            </select>
-                        </label>
-                        <label>
-                            Age:
-                            <input type='text' value={age} onChange={handleAge} />
-                        </label>
-                        <label>
-                            Weight:
-                            <input type='text' value={weight} onChange={handleWeight} />
-                        </label>
-                        <label>
-                            Height (in cm):
-                            <input type='number' value={height} onChange={handleHeightChange} />
-                        </label>
-                        <label>
-                            Smoking habit:
-                            <select value={smokingHabit} onChange={handleSmokingHabitChange}>
-                                <option value=''>--Please choose an option--</option>
-                                <option value='never'>Never smoked</option>
-                                <option value='occasional'>Occasional smoker</option>
-                                <option value='regular'>Regular smoker</option>
-                                <option value='ex-smoker'>Ex-smoker</option>
-                            </select>
-                        </label>
-                        <label>
-                            Alcohol consumption:
-                            <select value={alcoholConsumption} onChange={handleAlcoholConsumptionChange}>
-                                <option value=''>--Please choose an option--</option>
-                                <option value='never'>Never consumed</option>
-                                <option value='occasional'>Occasional consumer</option>
-                                <option value='regular'>Regular consumer</option>
-                                <option value='ex-consumer'>Ex-consumer</option>
-                            </select>
-                        </label>
-                        <label>
-                        <label>
-                            Email ID:
-                            <input type='text' value={username} onChange={handleUsernameChange} />
-                        </label>
-                        <label>
-                            Password:
-                            <input type='password' value={password} onChange={handlePasswordChange} />
-                        </label>
-                            Confirm password:
-                            <input type='password' value={confirmPassword} onChange={handleConfirmPassword} />
-                        </label>
-                        <div className='buttons-container'>
-                            <button type='submit' onClick={handleLogin}>Login</button>
-                            <button onClick={handleRegister}>Register</button>
+                        <div className='form-row'>
+                            <div className='form-group'>
+                                <label>
+                                    First Name:
+                                    <input type='text' value={firstName} onChange={handleFirstNameChange} />
+                                </label>
+                                <label>
+                                    Last Name:
+                                    <input type='text' value={lastName} onChange={handleLastNameChange} />
+                                </label>
+                                <label>
+                                    Gender:
+                                    <select value={gender} onChange={handleGenderChange}>
+                                        <option value=''>--Please choose an option--</option>
+                                        <option value='male'>Male</option>
+                                        <option value='female'>Female</option>
+                                        <option value='other'>Other</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div className='form-group'>
+
+                                <label>
+                                    Age:
+                                    <input type='text' value={age} onChange={handleAge} />
+                                </label>
+                                <label>
+                                    Weight:
+                                    <input type='text' value={weight} onChange={handleWeight} />
+                                </label>
+                                <label>
+                                    Height (in cm):
+                                    <input type='number' value={height} onChange={handleHeightChange} />
+                                </label>
+                            </div>
+                            <div className='form-group'>
+
+                                <label>
+                                    Sleep Pattern:
+                                    <select value={sleepPattern} onChange={handleSleepPatternChange}>
+                                        <option value=''>--Please choose an option--</option>
+                                        <option value='regular'>Regular Sleep Schedule</option>
+                                        <option value='insomnia'>Insomnia</option>
+                                        <option value='sleep-apnea'>Sleep Apnea</option>
+                                        <option value='irregular'>Irregular Sleep Schedule</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    Smoking habit:
+                                    <select value={smokingHabit} onChange={handleSmokingHabitChange}>
+                                        <option value=''>--Please choose an option--</option>
+                                        <option value='never'>Never smoked</option>
+                                        <option value='occasional'>Occasional smoker</option>
+                                        <option value='regular'>Regular smoker</option>
+                                        <option value='ex-smoker'>Ex-smoker</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    Alcohol consumption:
+                                    <select value={alcoholConsumption} onChange={handleAlcoholConsumptionChange}>
+                                        <option value=''>--Please choose an option--</option>
+                                        <option value='never'>Never consumed</option>
+                                        <option value='occasional'>Occasional consumer</option>
+                                        <option value='regular'>Regular consumer</option>
+                                        <option value='ex-consumer'>Ex-consumer</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div className='form-group'>
+                                <label>
+                                    <label>
+                                        Email ID:
+                                        <input type='text' value={username} onChange={handleUsernameChange} />
+                                    </label>
+                                    <label>
+                                        Password:
+                                        <input type='password' value={password} onChange={handlePasswordChange} />
+                                    </label>
+                                    Confirm password:
+                                    <input type='password' value={confirmPassword} onChange={handleConfirmPassword} />
+                                </label>
+                            </div>
+                            <div className='buttons-register-container'>
+                                <button type='submit' onClick={handleLogin}>Login</button>
+                                <button onClick={handleRegister}>Register</button>
+                            </div>
                         </div>
                     </form>
                     <AuthDetails />
