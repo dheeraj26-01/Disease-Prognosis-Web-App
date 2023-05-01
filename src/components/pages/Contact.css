@@ -3,14 +3,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
 }
 
 .contact_us {
   font-size: 3rem;
   text-align: center;
-  margin-top: 2rem;
   color: #333;
+  margin-top: 2rem;
 }
 
 .contact_us_content {
