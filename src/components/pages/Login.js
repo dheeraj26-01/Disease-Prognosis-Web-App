@@ -34,6 +34,12 @@ export default function Login() {
     const handleLogin = (event) => {
         event.preventDefault();
         // login
+
+        if (!username || !password) {
+            alert('Please enter valid email & password');
+            return;
+          }
+
         signInWithEmailAndPassword(auth, username, password)
             .then((userCredential) => {
                 console.log(userCredential);
@@ -69,8 +75,9 @@ export default function Login() {
     return (
         <div className='login-page'>
             <div className='login-container'>
-                <video className='login-video' src='videos/video-1.mp4' autoPlay muted loop></video>
+                <video className='login-video' src='videos/video-6.mp4' autoPlay muted loop></video>
                 <div className='form-half-container'>
+                    <video className='form-half-video' src='videos/video-4.mp4' autoPlay muted loop></video>
                     <h2 className='welcome'>Welcome To Diagnosio</h2>
                 <div className='login-form-container'>
                     <h2 className='login-header'>Sign In</h2>
@@ -83,12 +90,12 @@ export default function Login() {
                             Password:
                             <input type='password' value={password} onChange={handlePasswordChange} />
                         </label>
-                        <div className='buttons-container'>
+                        <div className='buttons-login-container'>
                             <button type='submit-login' onClick={handleLogin}>Login</button>
                             <button onClick={handleRegister}>Register</button>
                             <button className='googleBtn' onClick={handleGoogleLogin}><FcGoogle /></button>
-
                         </div>
+
                     </form>
                     <AuthDetails />
                 </div>

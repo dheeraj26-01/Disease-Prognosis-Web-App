@@ -117,7 +117,7 @@ export default function Register() {
     return (
         <div className='register-page'>
             <div className='register-container'>
-                <video className='register-video' src='videos/video-2.mp4' autoPlay muted loop></video>
+                <video className='register-video' src='videos/video-6.mp4' autoPlay muted loop></video>
                 <div className='register-form-container'>
                     <h2 className='register-header'>Create Account</h2>
                     <form onSubmit={handleLogin} className='register-form'>
