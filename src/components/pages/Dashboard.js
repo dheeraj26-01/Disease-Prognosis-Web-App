@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth, app } from "../../firebase.js";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { motion } from "framer-motion"
 // import GoogleMap from './GoogleMap';
 
 
@@ -79,6 +83,21 @@ const Dashboard = () => {
     setSubmitted(true);
   };
 
+  const [user] = useAuthState(auth);
+  const [userDetails, setUserDetails] = useState(null);
+
+  useEffect(() => {
+      const database = getDatabase();
+      if (user) {
+          const userId = user.uid;
+          const userRef = ref(database, `users/${userId}`);
+          onValue(userRef, (snapshot) => {
+              const data = snapshot.val();
+              setUserDetails(data);
+          });
+      }
+  }, [user]);
+
   return (
     <div className='dashboard'>
       <div className='patient-info-container'>
@@ -86,10 +105,10 @@ const Dashboard = () => {
           <img src='https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=' alt='Patient Profile' />
         </div>
         <div className='patient-information'>
-          <p><strong>Name:</strong> John Doe</p>
-          <p><strong>Age:</strong> 35</p>
-          <p><strong>Weight:</strong> 75 kg</p>
-          <p><strong>Gender:</strong> Male</p>
+        <p><strong>Name:</strong> {userDetails?.firstName} {userDetails?.lastName}</p>
+                <p><strong>Age:</strong> {userDetails?.age}</p>
+                <p><strong>Weight:</strong> {userDetails?.weight} kg</p>
+                <p><strong>Gender:</strong> {userDetails?.gender}</p>
         </div>
       </div>
 
@@ -144,8 +163,7 @@ const Dashboard = () => {
             <option value='cough'>Cough</option>
             <option value='shortness-of-breath'>Shortness of breath</option>
           </select>
-
-          <button type='submit'>Submit</button>
+          <motion.button type='submit' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}transition={{ type: "spring", stiffness: 400, damping: 17 }}>Submit</motion.button>
         </form>
       </div>
 

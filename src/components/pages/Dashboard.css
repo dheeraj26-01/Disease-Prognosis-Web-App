@@ -11,7 +11,7 @@
   align-items: center;
   width: 45%;
   height: 310px;
-  background-color: #fff;
+  background-color: #f8f8f8;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -38,7 +38,7 @@
 
 .symptoms-form-container {
   width: 45%;
-  background-color: #fff;
+  background-color: #f8f8f8;
   height: 310px;
   padding: 20px;
   border-radius: 20px;
@@ -78,6 +78,7 @@
 
 .symptoms-form button {
   background-color: #007bff;
+  position: relative;
   color: #fff;
   margin-top: 20px;
   border: none;
@@ -86,6 +87,7 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
 .symptoms-form button:hover {
   background-color: #005ae6;
 }
@@ -105,7 +107,7 @@
 .doctor-container {
   width: 70%;
   height: 400px;
-  background: linear-gradient(to right, #56CCF2, #2F80ED);
+  background: linear-gradient(to right, #f5e0b7, #000000);
   padding: 40px;
   margin: 20px auto;
   border-radius: 20px;
