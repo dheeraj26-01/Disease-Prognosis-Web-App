@@ -3,8 +3,7 @@ import '../../App.css';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc'
-
-
+import { motion } from "framer-motion"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider } from "firebase/auth";
@@ -91,9 +90,9 @@ export default function Login() {
                             <input type='password' value={password} onChange={handlePasswordChange} />
                         </label>
                         <div className='buttons-login-container'>
-                            <button type='submit-login' onClick={handleLogin}>Login</button>
-                            <button onClick={handleRegister}>Register</button>
-                            <button className='googleBtn' onClick={handleGoogleLogin}><FcGoogle /></button>
+                            <motion.button type='submit-login' onClick={handleLogin} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}transition={{ type: "spring", stiffness: 400, damping: 17 }}>Login</motion.button>
+                            <motion.button onClick={handleRegister} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}transition={{ type: "spring", stiffness: 400, damping: 17 }}>Register</motion.button>
+                            <motion.button className='googleBtn' onClick={handleGoogleLogin} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}transition={{ type: "spring", stiffness: 400, damping: 17 }}><FcGoogle /></motion.button>
                         </div>
 
                     </form>

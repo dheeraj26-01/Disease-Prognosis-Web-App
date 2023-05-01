@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, app } from "../../firebase.js";
 import { getDatabase, ref, set } from "firebase/database";
 import AuthDetails from '../AuthDetails';
+import { motion } from "framer-motion"
 
 export default function Register() {
     const [firstName, setFirstName] = useState('');
@@ -204,8 +205,8 @@ export default function Register() {
                                 </label>
                             </div>
                             <div className='buttons-register-container'>
-                                <button type='submit' onClick={handleLogin}>Login</button>
-                                <button onClick={handleRegister}>Register</button>
+                                <motion.button type='submit' onClick={handleLogin} whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}transition={{ type: "spring", stiffness: 400, damping: 17 }}>Login</motion.button>
+                                <motion.button onClick={handleRegister} whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}transition={{ type: "spring", stiffness: 400, damping: 17 }}>Register</motion.button>
                             </div>
                         </div>
                     </form>
