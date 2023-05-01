@@ -31,3 +31,15 @@ code {
 .layer2{
   background-image: url('/public/svg/stacked-waves-haikei.svg');
 }
+
+.layer3 {
+  background-image: url('/public/svg/double-waves-corner.svg'); 
+}
+
+.spacer3{
+  aspect-ratio: 960/400;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; 
+}

@@ -29,6 +29,7 @@ export default function AboutUs() {
                     </p>
                 </Fade>
             </div>
+            <div className='spacer layer1 flip'></div>
             <div className='services_container'>
                 <Fade bottom><h2 className='services_title'>Our Services</h2></Fade>
                 <div className='services_cards_container'>
