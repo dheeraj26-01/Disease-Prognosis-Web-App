@@ -12,3 +12,22 @@ code {
   font-family: 'Montserrat', sans-serif;
 }
  
+.spacer{
+  aspect-ratio: 960/200;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.layer1{
+  background-image: url('/public/svg/layered-waves-haikei.svg');
+}
+
+.flip {
+  transform: rotate(180deg);
+}
+
+.layer2{
+  background-image: url('/public/svg/stacked-waves-haikei.svg');
+}
