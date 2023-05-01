@@ -3,8 +3,8 @@ import '../../App.css';
 import './Register.css';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-
-import { auth } from "../../firebase.js";
+import { auth, app } from "../../firebase.js";
+import { getDatabase, ref, set } from "firebase/database";
 import AuthDetails from '../AuthDetails';
 
 export default function Register() {
@@ -67,6 +67,7 @@ export default function Register() {
         setAlcoholConsumption(event.target.value);
     };
 
+    const database = getDatabase();
 
     const navigate = useNavigate()
 
@@ -76,10 +77,35 @@ export default function Register() {
 
     const handleRegister = (event) => {
         event.preventDefault();
+        if (!firstName || !lastName || !age || !weight || !gender || !height || !sleepPattern || !smokingHabit || !alcoholConsumption || !username || !password || !confirmPassword) {
+            alert("Please fill in all fields");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+        }
+
         // registration
         createUserWithEmailAndPassword(auth, username, password)
             .then((userCredential) => {
-
+                const userId = userCredential.user.uid;
+                set(ref(database, `users/${userId}`), {
+                    firstName,
+                    lastName,
+                    age,
+                    weight,
+                    gender,
+                    height,
+                    sleepPattern,
+                    smokingHabit,
+                    alcoholConsumption,
+                }).then(() => {
+                    console.log("User details stored in database");
+                }).catch((error) => {
+                    console.log("Error storing user details in database", error);
+                });
 
                 console.log(userCredential);
             })
