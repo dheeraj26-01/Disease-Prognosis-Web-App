@@ -8,6 +8,8 @@ import { Zoom } from 'react-reveal';
 export default function Contact() {
     return (
         <div>
+            <div className='spacer3 layer3'>
+
             <div className='contact_container'>
             <Fade bottom><h1 className='contact_us'>Contact Us</h1></Fade>
                 <div className='contact_us_content'>
@@ -39,6 +41,7 @@ export default function Contact() {
                     </div>
                         </Zoom>
                 </div>
+            </div>
             </div>
         </div>
     );
