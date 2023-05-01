@@ -33,7 +33,7 @@ function Navbar() {
         <div className='navbar-container'>
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             {/* <img src='https://cdn.dribbble.com/userupload/3158902/file/original-7c71bfa677e61dea61bc2acd59158d32.jpg?resize=400x0'/> */}
-            DP Logo <i className='fab fa-typo3'></i>
+            Diagnosio <i className='fab fa-typo3'></i>
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />

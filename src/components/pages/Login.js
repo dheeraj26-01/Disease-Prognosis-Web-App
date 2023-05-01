@@ -71,7 +71,7 @@ export default function Login() {
             <div className='login-container'>
                 <video className='login-video' src='videos/video-1.mp4' autoPlay muted loop></video>
                 <div className='form-half-container'>
-                    <h2 className='welcome'>Welcome To Our Website</h2>
+                    <h2 className='welcome'>Welcome To Diagnosio</h2>
                 <div className='login-form-container'>
                     <h2 className='login-header'>Sign In</h2>
                     <form onSubmit={handleLogin} className='login-form'>
