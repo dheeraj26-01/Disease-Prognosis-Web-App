@@ -183,8 +183,7 @@ const Dashboard = () => {
                 <p>{doctor.experience} experience</p>
               </div>
               <div className='doctor-info-right'>
-                <p>Area of Expertise:</p>
-                <p>{doctor.expertise}</p>
+                <p>Area of Expertise: {doctor.expertise}</p>
                 <p>Contact:</p>
                 <ul>
                   <li>Phone: {doctor.contact.phone}</li>

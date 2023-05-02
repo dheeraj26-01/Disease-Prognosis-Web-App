@@ -36,6 +36,10 @@
   flex: 1;
 }
 
+.patient-information > p{
+  font-weight: 500;
+}
+
 .symptoms-form-container {
   width: 45%;
   background-color: #f8f8f8;
@@ -117,6 +121,50 @@
   align-items: center;
 }
 
+@media screen and (max-width: 768px) {
+  .doctor-container {
+  width: 90%;
+  height: auto;
+  flex-direction: column;
+  padding: 20px;
+  }
+
+  .doctor-info {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+    
+    .doctor-info img {
+    width: 120px;
+    height: 120px;
+    margin-right: 0;
+    margin-bottom: 10px;
+    align-items: center;
+    }
+    
+    .doctor-info-left {
+    /* padding-right: 0; */
+    margin-bottom: 10px;
+    text-align: center;
+    }
+    
+    .doctor-info-right {
+    align-items: center;
+    text-align: center;
+    }
+    
+    .doctor-info p {
+    font-size: 16px;
+    line-height: 22px;
+    }
+    
+    .doctor-info ul li {
+    font-size: 14px;
+    line-height: 24px;
+    }
+  }
+
 .doctor-info {
   display: flex;
   justify-content: space-between;
@@ -128,6 +176,7 @@
   justify-content: center;
   align-items: center;
   padding-right: 30px;
+  font-weight: 900;
 }
 
 .doctor-info-right {
@@ -136,6 +185,7 @@
   justify-content: center;
   align-items: flex-start;
   color: #fff;
+  font-weight: 800;
 }
 
 .doctor-info img {
@@ -144,12 +194,13 @@
   border-radius: 50%;
   object-fit: cover;
   margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .doctor-info p {
   margin: 0;
   font-size: 18px;
-  line-height: 24px;
+  line-height: 25px;
 }
 
 .doctor-info ul {
@@ -160,6 +211,7 @@
 
 .doctor-info ul li {
   font-size: 16px;
-  line-height: 20px;
+  line-height: 30px;
   margin-bottom: 5px;
 }
+
