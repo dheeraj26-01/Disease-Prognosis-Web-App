@@ -167,11 +167,6 @@ const Dashboard = () => {
         </form>
       </div>
 
-      <div className='map-container-dashboard'>
-        <h2>Map</h2>
-        <p>Map goes here</p>
-        {/* <GoogleMap /> */}
-      </div>
       {submitted && (
         <div className='doctor-container'>
           {doctor && (
@@ -194,6 +189,11 @@ const Dashboard = () => {
           )}
         </div>
       )}
+      <div className='map-container-dashboard'>
+        <h2>Map</h2>
+        <p>Map goes here</p>
+        {/* <GoogleMap /> */}
+      </div>
     </div>
   );
 };
