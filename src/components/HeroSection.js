@@ -34,7 +34,7 @@ function HeroSection() {
             </Button> 
 
             <Button className='btns' buttonStyle='btn--primary'
-            buttonSize='btn--large'>Feel Good <i className='far fa-play-circle' />
+            buttonSize='btn--large' href='https://youtu.be/6ajmuRg2o3Q'>Feel Good <i className='far fa-play-circle' />
             </Button> 
         </div>
         </Fade>
