@@ -3,7 +3,7 @@ import './Dashboard.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, app } from "../../firebase.js";
 import { getDatabase, ref, onValue } from "firebase/database";
-import { motion } from "framer-motion"
+import {useAnimate, stagger, motion } from "framer-motion"
 // import GoogleMap from './GoogleMap';
 
 
@@ -97,6 +97,8 @@ const Dashboard = () => {
           });
       }
   }, [user]);
+
+  
 
   return (
     <div className='dashboard'>
