@@ -7,8 +7,6 @@ import { motion } from "framer-motion"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider } from "firebase/auth";
-
-
 import { auth } from "../../firebase.js";
 import AuthDetails from '../AuthDetails';
 
@@ -74,7 +72,7 @@ export default function Login() {
     return (
         <div className='login-page'>
             <div className='login-container'>
-                <video className='login-video' src='videos/video-6.mp4' autoPlay muted loop></video>
+                <video className='login-video' src='videos/video-2.mp4' autoPlay muted loop></video>
                 <div className='form-half-container'>
                     <video className='form-half-video' src='videos/video-4.mp4' autoPlay muted loop></video>
                     <h2 className='welcome'>Welcome To Diagnosio</h2>

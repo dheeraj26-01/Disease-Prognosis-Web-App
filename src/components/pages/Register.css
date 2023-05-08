@@ -1,17 +1,17 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 
 html,
 body {
     height: 100%;
-}
+} 
 
 .register-page {
-    overflow: hidden;
     height: 91.05vh;
+    overflow: hidden;
 }
 
 .register-container {
@@ -20,8 +20,8 @@ body {
     align-items: center;
     height: 100vh;
     /* background-color: #12343b; */
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
-    position: relative;
+    /* box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3); */
+    /* position: relative;   */
 }
 
 
@@ -29,7 +29,7 @@ body {
     opacity: 0.9;
     position: absolute;
     z-index: 1;
-    top: 47%;
+    top: 56%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
