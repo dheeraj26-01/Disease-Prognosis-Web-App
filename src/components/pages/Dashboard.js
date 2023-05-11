@@ -169,28 +169,7 @@ const Dashboard = () => {
         </form>
       </div>
 
-      {submitted && (
-        <div className='doctor-container'>
-          {doctor && (
-            <div className='doctor-info'>
-              <div className='doctor-info-left'>
-                <img src={doctor.image} alt='Doctor' />
-                <p>{doctor.name}</p>
-                <p>{doctor.age} years old</p>
-                <p>{doctor.experience} experience</p>
-              </div>
-              <div className='doctor-info-right'>
-                <p>Area of Expertise: {doctor.expertise}</p>
-                <p>Contact:</p>
-                <ul>
-                  <li>Phone: {doctor.contact.phone}</li>
-                  <li>Email: {doctor.contact.email}</li>
-                </ul>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
+
       <div className='map-container-dashboard'>
         <div className="result">
           <motion.div
@@ -218,6 +197,41 @@ const Dashboard = () => {
         </div>
         {/* <GoogleMap /> */}
       </div>
+
+      {submitted && (
+        <motion.div
+          className="doctor-container-wrapper"
+          animate={{
+            scale: [0, 1],
+            borderRadius: ["50%", "0%"]
+          }}
+          transition={{
+            duration: 1.5,
+            ease: "easeInOut",
+          }}
+        >
+          <div className='doctor-container'>
+            {doctor && (
+              <div className='doctor-info'>
+                <div className='doctor-info-left'>
+                  <img src={doctor.image} alt='Doctor' />
+                  <p>{doctor.name}</p>
+                  <p>{doctor.age} years old</p>
+                  <p>{doctor.experience} experience</p>
+                </div>
+                <div className='doctor-info-right'>
+                  <p>Area of Expertise: {doctor.expertise}</p>
+                  <p>Contact:</p>
+                  <ul>
+                    <li>Phone: {doctor.contact.phone}</li>
+                    <li>Email: {doctor.contact.email}</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 };
