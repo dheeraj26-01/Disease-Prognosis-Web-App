@@ -210,6 +210,7 @@ const Dashboard = () => {
             ease: "easeInOut",
           }}
         >
+          <h2>Get In Touch With Our Doctors ~</h2>
           <div className='doctor-container'>
             {doctor && (
               <div className='doctor-info'>
@@ -221,8 +222,8 @@ const Dashboard = () => {
                 </div>
                 <div className='doctor-info-right'>
                   <p>Area of Expertise: {doctor.expertise}</p>
-                  <p>Contact:</p>
                   <ul>
+                  <p>Contact:</p>
                     <li>Phone: {doctor.contact.phone}</li>
                     <li>Email: {doctor.contact.email}</li>
                   </ul>
