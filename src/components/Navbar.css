@@ -63,7 +63,7 @@
   text-decoration: none;
   padding: 0.5rem 1rem;
   height: 100%;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .nav-links:hover {
@@ -81,6 +81,23 @@
 
 .menu-icon {
   display: none;
+}
+
+.btn-container Button{
+  color: #0e1214;
+  background-color: rgb(254, 247, 239);
+  border: 0.5px solid #0e1214;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-container Button:hover {
+  color: rgb(254, 247, 239);
+  background-color: #323334;
+  transition: all 0.2s ease-out;
 }
 
 @media screen and (max-width: 960px) {

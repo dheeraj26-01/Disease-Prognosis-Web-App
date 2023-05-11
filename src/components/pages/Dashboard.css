@@ -99,13 +99,33 @@
 .map-container-dashboard {
   width: 100%;
   height: 400px;
-  background-color: #fff;
-  padding: 20px;
+  background-color: red;
+  /* padding: 20px; */
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: center;
   align-items: center;
+}
+
+.result{
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #005ae6;
+}
+
+.wrapper{
+  background-color: green;
+  width: 100%;
+  height: 100%;
+}
+
+.result-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .doctor-container {
