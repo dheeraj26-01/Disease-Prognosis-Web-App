@@ -99,7 +99,7 @@
 .map-container-dashboard {
   width: 100%;
   height: 400px;
-  background-color: red;
+  background-color: #f8f8f8;
   /* padding: 20px; */
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -113,11 +113,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #005ae6;
+  background-color: rgb(254, 247, 239);
 }
 
 .wrapper{
-  background-color: green;
+  /* background: linear-gradient(90deg, #FDBB2D 0%, #3A1C71 100%); */
+  /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
+  /* background: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%); */
+  background: linear-gradient(to right, #ffa17f, #00223e);
   width: 100%;
   height: 100%;
 }
@@ -125,6 +128,23 @@
 .result-wrapper{
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.results-content{
+  width: 80%;
+  height: auto;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #f8f8f8;
+  border-radius: 1.5rem;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  line-height: 1.8;
+  font-size: 1.2rem;
+  color: #555;
+  text-align: center;
   justify-content: center;
 }
 

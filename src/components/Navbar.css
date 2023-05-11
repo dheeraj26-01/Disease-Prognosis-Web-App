@@ -85,7 +85,7 @@
 
 .btn-container Button{
   color: #0e1214;
-  background-color: rgb(254, 247, 239);
+  background-color: transparent;
   border: 0.5px solid #0e1214;
   padding: 0.5rem 1rem;
   font-weight: 500;

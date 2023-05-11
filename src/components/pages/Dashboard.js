@@ -200,13 +200,19 @@ const Dashboard = () => {
               borderRadius: ["50%", "0%"]
             }}
             transition={{
-              duration: 1,
+              duration: 1.5,
               ease: "easeInOut",
             }}
           >
-            <div className="result-wrapper">Results</div>
+            <div className="result-wrapper">
+              <h2>Results</h2>
+              <div className="results-content">
+                You have a disease !!
+              </div>
+            </div>
           </motion.div>
         </div>
+
         <div className="maps">
           MAPS
         </div>
