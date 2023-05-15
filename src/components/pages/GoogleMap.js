@@ -1,86 +1,80 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect } from 'react';
+import { Loader } from "@googlemaps/js-api-loader"
 
-// function GoogleMap() {
-//   const [map, setMap] = useState(null);
+const GoogleMaps = () => {
+    useEffect(() => {
+        const loadGoogleMaps = async () => {
+            const loader = new Loader({
+                apiKey: 'AIzaSyAhj2VjaWW980pxbqs2q3mNKI7tDBtRXW4',
+                version: 'weekly',
+                // ...additionalOptions
+            });
 
-//   useEffect(() => {
-//     if (!window.google) {
-//       const script = document.createElement("script");
-//       script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.AIzaSyA9xvF5Bwoje9eQolevrzG28Fqegbd_Yik}&libraries=places`;
-//       script.onload = initMap;
-//       document.head.appendChild(script);
-//     } else {
-//       initMap();
-//     }
-//   }, []);
+            try {
+                if (!window.google || !window.google.maps) {
+                    await loader.load();
+                }
 
-//   function initMap() {
-//     const google = window.google;
+                const { google } = window;
+                const map = new google.maps.Map(document.getElementById('maps'), {
+                    center: { lat: 12.9716, lng: 77.5946 },
+                    zoom: 12,
+                });
 
-//     const map = new google.maps.Map(document.getElementById("map"), {
-//       center: { lat: 37.7749, lng: -122.4194 },
-//       zoom: 13,
-//     });
+                // Initialize Places service
+                const service = new window.google.maps.places.PlacesService(map);
 
-//     const infoWindow = new google.maps.InfoWindow();
-//     const service = new google.maps.places.PlacesService(map);
+                // Use Places service to search for medical clinics and hospitals
+                service.nearbySearch(
+                    {
+                        location: { lat: 0, lng: 0 }, // Update with user's current location
+                        radius: 5000, // Specify the radius in meters (e.g., 5000 = 5km)
+                        type: ['hospital', 'clinic'], // Specify the types of places to search
+                    },
+                    (results, status) => {
+                        if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+                            // Process the search results
+                            for (let i = 0; i < results.length; i++) {
+                                createMarker(results[i]);
+                            }
+                        }
+                    }
+                );
 
-//     if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition(
-//         (position) => {
-//           const { latitude, longitude } = position.coords;
-//           const location = new google.maps.LatLng(latitude, longitude);
+                const createMarker = (place) => {
+                    const marker = new window.google.maps.Marker({
+                        map: map,
+                        position: place.geometry.location,
+                    });
 
-//           const request = {
-//             location,
-//             radius: 5000,
-//             type: ["hospital"],
-//           };
+                    const infowindow = new window.google.maps.InfoWindow({
+                        content: place.name,
+                    });
 
-//           service.nearbySearch(request, (results, status) => {
-//             if (status === google.maps.places.PlacesServiceStatus.OK) {
-//               for (let i = 0; i < results.length; i++) {
-//                 createMarker(results[i]);
-//               }
-//             }
-//           });
+                    marker.addListener('click', () => {
+                        infowindow.open(map, marker);
+                    });
+                };
+            } catch (error) {
+                console.error('Error loading Google Maps:', error);
+            }
+        };
 
-//           map.setCenter(location);
-//         },
-//         () => {
-//           handleLocationError(true, infoWindow, map.getCenter());
-//         }
-//       );
-//     } else {
-//       handleLocationError(false, infoWindow, map.getCenter());
-//     }
+        // Load the Google Maps script
+        if (window.google && window.google.maps) {
+            loadGoogleMaps();
+        } else {
+            // Load the Google Maps API asynchronously
+            window.initMap = loadGoogleMaps;
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAhj2VjaWW980pxbqs2q3mNKI7tDBtRXW4&libraries=places&callback=initMap`;
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+        }
+    }, []);
 
-//     function createMarker(place) {
-//       const marker = new google.maps.Marker({
-//         map,
-//         position: place.geometry.location,
-//       });
+    return <div id="maps" style={{ height: '100vh' }}></div>;
+};
 
-//       google.maps.event.addListener(marker, "click", () => {
-//         infoWindow.setContent(place.name);
-//         infoWindow.open(map, marker);
-//       });
-//     }
-
-//     function handleLocationError(browserHasGeolocation, infoWindow, location) {
-//       infoWindow.setPosition(location);
-//       infoWindow.setContent(
-//         browserHasGeolocation
-//           ? "Error: The Geolocation service failed."
-//           : "Error: Your browser doesn't support geolocation."
-//       );
-//       infoWindow.open(map);
-//     }
-
-//     setMap(map);
-//   }
-
-//   return <div id="map" style={{ height: "500px" }}></div>;
-// }
-
-// export default GoogleMap;
+export default GoogleMaps;
