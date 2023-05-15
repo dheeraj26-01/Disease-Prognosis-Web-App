@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, app } from "../../firebase.js";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { useAnimate, stagger, motion } from "framer-motion"
-import GoogleMap from './GoogleMap';
+// import GoogleMap from './GoogleMap';
 
 
 const doctors = [
@@ -193,7 +193,8 @@ const Dashboard = () => {
         </div>
 
         <div className="maps">
-          <GoogleMap />
+          maps
+          {/* <GoogleMap /> */}
         </div>
       </div>
 
