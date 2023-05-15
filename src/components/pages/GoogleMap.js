@@ -1,3 +1,4 @@
+/*
 import React, { useEffect } from 'react';
 import { Loader } from "@googlemaps/js-api-loader"
 
@@ -78,3 +79,4 @@ const GoogleMaps = () => {
 };
 
 export default GoogleMaps;
+*/
