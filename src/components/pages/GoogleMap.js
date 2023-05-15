@@ -6,7 +6,7 @@ const GoogleMaps = () => {
     useEffect(() => {
         const loadGoogleMaps = async () => {
             const loader = new Loader({
-                apiKey: 'AIzaSyAhj2VjaWW980pxbqs2q3mNKI7tDBtRXW4',
+                apiKey: 'YOUR_API_KEY',
                 version: 'weekly',
                 // ...additionalOptions
             });
@@ -68,7 +68,7 @@ const GoogleMaps = () => {
             // Load the Google Maps API asynchronously
             window.initMap = loadGoogleMaps;
             const script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAhj2VjaWW980pxbqs2q3mNKI7tDBtRXW4&libraries=places&callback=initMap`;
+            script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap`;
             script.async = true;
             script.defer = true;
             document.head.appendChild(script);
