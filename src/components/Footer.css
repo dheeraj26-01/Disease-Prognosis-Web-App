@@ -1,5 +1,7 @@
 .footer-container {
-    background: linear-gradient(90deg, rgb(11, 11, 35) 0%, rgb(26, 23, 23) 100%);
+    /* background: linear-gradient(90deg, rgb(11, 11, 35) 0%, rgb(26, 23, 23) 100%); */
+    background-color: rgb(254, 247, 239); 
+    
     padding: 4rem 0 2rem 0;
     display: flex;
     flex-direction: column;
@@ -15,7 +17,7 @@
     text-align: center;
     margin-bottom: 24px;
     padding: 24px;
-    color: #fff;
+    color: #000000;
   }
   
   .footer-subscription > p {
@@ -41,7 +43,7 @@
     border: none;
     font-size: 18px;
     margin-bottom: 16px;
-    border: 1px solid #fff;
+    border: 1px solid #fbfafa;
   }
   
   .footer-links {
@@ -70,11 +72,11 @@
   }
   
   .footer-link-items > h2 {
-    color: #fff;
+    color: #000000;
   }
   
   .footer-link-items a {
-    color: #fff;
+    color: #070707;
     text-decoration: none;
     margin-bottom: 0.5rem;
   }
@@ -90,11 +92,28 @@
   
   .footer-input::placeholder {
     color: #ffffff;
+    font-weight: 400;
+    font-style: italic;
   }
   
+  .btn-container-sub Button{
+    background-color: white;
+    color: #000000;
+    border: 0.5px solid #0e1214;
+    padding: 8px 20px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .btn-container-sub Button:hover {
+    color: rgb(254, 247, 239);
+    background-color: #323334;
+    transition: all 0.2s ease-out;
+  }
+
   /* Social Icons */
   .social-icon-link {
-    color: #fff;
+    color: #030303;
     font-size: 24px;
   }
   
@@ -120,7 +139,7 @@
   }
   
   .social-logo {
-    color: #fff;
+    color: #000000;
     justify-self: start;
     margin-left: 20px;
     cursor: pointer;
@@ -132,7 +151,7 @@
   }
   
   .website-rights {
-    color: #fff;
+    color: #090909;
     margin-bottom: 16px;
   }
   
