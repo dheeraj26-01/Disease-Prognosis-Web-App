@@ -79,11 +79,12 @@
     color: #070707;
     text-decoration: none;
     margin-bottom: 0.5rem;
+    font-weight: 450;
   }
   
   .footer-link-items a:hover {
-    color: #007fa9;
-    transition: 0.3s ease-out;
+    color: #cf7328;
+    transition: 0.32s ease-out;
   }
   
   .footer-email-form h2 {

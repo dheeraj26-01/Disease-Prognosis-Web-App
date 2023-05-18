@@ -72,9 +72,9 @@ export default function Login() {
     return (
         <div className='login-page'>
             <div className='login-container'>
-                <video className='login-video' src='videos/video-2.mp4' autoPlay muted loop></video>
+                <video className='login-video' src='videos/video-3.mp4' autoPlay muted loop></video>
                 <div className='form-half-container'>
-                    <video className='form-half-video' src='videos/video-4.mp4' autoPlay muted loop></video>
+                    <video className='form-half-video' src='videos/video-2.mp4' autoPlay muted loop></video>
                     <h2 className='welcome'>Welcome To Diagnosio</h2>
                 <div className='login-form-container'>
                     <h2 className='login-header'>Sign In</h2>
