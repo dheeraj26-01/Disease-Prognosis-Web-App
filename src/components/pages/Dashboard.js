@@ -15,7 +15,7 @@ const doctors = [
     experience: '15 years',
     expertise: 'Cardiology',
     contact: {
-      phone: '123-456-7890',
+      phone: '8012345679',
       email: 'john.smith@diagnosio.com'
     },
     image: 'https://img.freepik.com/free-photo/attractive-young-male-nutriologist-lab-coat-smiling-against-white-background_662251-2960.jpg'
@@ -26,18 +26,18 @@ const doctors = [
     experience: '10 years',
     expertise: 'Gastroenterology',
     contact: {
-      phone: '123-456-7890',
+      phone: '8901234567',
       email: 'maria.garcia@diagnosio.com'
     },
     image: 'https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg'
   },
   {
     name: 'Dr. William Lee',
-    age: 50,
-    experience: '20 years',
+    age: 40,
+    experience: '16 years',
     expertise: 'Neurology',
     contact: {
-      phone: '123-456-7890',
+      phone: '9123456780',
       email: 'william.lee@diagnosio.com'
     },
     image: 'https://img.freepik.com/free-photo/handsome-young-male-doctor-with-stethoscope-standing-against-blue-background_662251-343.jpg'
@@ -48,7 +48,7 @@ const doctors = [
     experience: '12 years',
     expertise: 'Dermatology',
     contact: {
-      phone: '123-456-7890',
+      phone: '9654321876',
       email: 'elizabeth.brown@diagnosio.com'
     },
     image: 'https://media.istockphoto.com/id/1323303738/photo/medical-doctor-indoors-portraits.jpg?s=170667a&w=0&k=20&c=LoWDLLMsblLcIAzwvUCJEE07am20JkRqAvstUrXLUgw='
@@ -59,7 +59,7 @@ const doctors = [
     experience: '25 years',
     expertise: 'Orthopedics',
     contact: {
-      phone: '123-456-7890',
+      phone: '8765432109',
       email: 'david.martinez@diagnosio.com'
     },
     image: 'https://t4.ftcdn.net/jpg/03/20/52/31/360_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg'
@@ -70,10 +70,10 @@ const doctors = [
     experience: '14 years',
     expertise: 'Family Medicine',
     contact: {
-      phone: '123-456-7890',
+      phone: '9876543210',
       email: 'sarah.johnson@diagnosio.com'
     },
-    image: 'https://media.npr.org/assets/img/2021/05/20/harihar_vert-0cbe6e9756e62e28bc77d7e61774e17d1455c9e1-s1100-c50.jpg'
+    image: 'https://st2.depositphotos.com/5906386/8938/i/950/depositphotos_89385466-stock-photo-beautiful-girl-doctor-in-a.jpg'
   },
   {
     name: 'Dr. Michael Thompson',
@@ -81,7 +81,7 @@ const doctors = [
     experience: '6 years',
     expertise: 'Internal Medicine',
     contact: {
-      phone: '123-456-7890',
+      phone: '7890123456',
       email: 'michael.thompson@diagnosio.com'
     },
     image: 'https://st4.depositphotos.com/1325771/39154/i/600/depositphotos_391545206-stock-photo-happy-male-medical-doctor-portrait.jpg'
@@ -92,7 +92,7 @@ const doctors = [
     experience: '13 years',
     expertise: 'Pediatrics',
     contact: {
-      phone: '123-456-7890',
+      phone: '7012345678',
       email: 'jessica.wilson@diagnosio.com'
     },
     image: 'https://t3.ftcdn.net/jpg/05/04/25/70/360_F_504257032_jBtwqNdvdMN9Xm6aDT0hcvtxDXPZErrn.jpg'
@@ -103,7 +103,7 @@ const doctors = [
     experience: '19 years',
     expertise: 'Ophthalmology',
     contact: {
-      phone: '123-456-7890',
+      phone: '6789012345',
       email: 'christopher.davis@diagnosio.com'
     },
     image: 'https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?b=1&s=170667a&w=0&k=20&c=vUq0J-LgD4FPEV1Ua_0NeQBcJ2xb8EjGe5fdcR1K2x0='
@@ -114,7 +114,7 @@ const doctors = [
     experience: '16 years',
     expertise: 'Psychiatry',
     contact: {
-      phone: '123-456-7890',
+      phone: '5678901234',
       email: 'emily.anderson@diagnosio.com'
     },
     image: 'https://t4.ftcdn.net/jpg/03/17/85/49/360_F_317854905_2idSdvi2ds3yejmk8mhvxYr1OpdVTrSM.jpg'

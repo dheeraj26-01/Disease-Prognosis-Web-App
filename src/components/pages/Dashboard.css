@@ -119,9 +119,10 @@
 .wrapper{
   /* background: linear-gradient(90deg, #FDBB2D 0%, #3A1C71 100%); */
   /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
-  /* background: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%); */
+  /* background: linear-gradient(-20deg, #161518 0%, #282d0b 100%); */
   /* background: linear-gradient(to right, #ffa17f, #00223e); */
-  background: linear-gradient(to right, #050c19, #00223e);
+  /* background: linear-gradient(to right, #050c19, #00223e); */
+  background: linear-gradient(to right, #4c422d, #000000);
   width: 100%;
   height: 100%;
 }
@@ -168,7 +169,7 @@
 .doctor-container {
   width: 70%;
   height: 400px;
-  background: linear-gradient(to right, #f5e0b7, #000000);
+  background: linear-gradient(to right, #beb64a, #000000);
   padding: 40px;
   margin: 20px auto;
   border-radius: 20px;
@@ -255,12 +256,13 @@
 }
 
 .doctor-info img {
-  width: 150px;
+  width: 180px;
   height: 150px;
-  border-radius: 50%;
+  border-radius: 25%;
   object-fit: cover;
   margin-right: 20px;
   margin-bottom: 20px;
+  align-items: center;
 }
 
 .doctor-info p {
