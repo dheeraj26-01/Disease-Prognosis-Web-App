@@ -3,8 +3,7 @@ import './Dashboard.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from "../../firebase.js";
 import { getDatabase, ref, onValue } from "firebase/database";
-import { motion } from "framer-motion"
-import { GoogleMaps } from '@react-google-maps/api';
+import { motion, AnimatePresence } from "framer-motion"
 import GoogleMap from './GoogleMap';
 
 
@@ -121,23 +120,19 @@ const doctors = [
   }
 ];
 
-const getRandomDoctor = () => {
-  const randomIndex = Math.floor(Math.random() * doctors.length);
-  return doctors[randomIndex];
-};
-
 
 
 const Dashboard = () => {
-  const [doctor, setDoctor] = useState(null);
-  const [submitted, setSubmitted] = useState(false);
+  const [selectedExpertise, setSelectedExpertise] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const randomDoctor = getRandomDoctor();
-    setDoctor(randomDoctor);
-    setSubmitted(true);
   };
+
+  const handleExpertiseClick = (expertise) => {
+    setSelectedExpertise(expertise);
+  };
+
 
   const [user] = useAuthState(auth);
   const [userDetails, setUserDetails] = useState(null);
@@ -153,6 +148,7 @@ const Dashboard = () => {
       });
     }
   }, [user]);
+
 
 
 
@@ -253,41 +249,67 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {submitted && (
-        <motion.div
-          className="doctor-container-wrapper"
-          animate={{
-            scale: [0, 1],
-            borderRadius: ["50%", "0%"]
-          }}
-          transition={{
-            duration: 1.5,
-            ease: "easeInOut",
-          }}
-        >
-          <h2>Get In Touch With Our Doctors ~</h2>
-          <div className='doctor-container'>
-            {doctor && (
-              <div className='doctor-info'>
-                <div className='doctor-info-left'>
-                  <img src={doctor.image} alt='Doctor' />
-                  <p>{doctor.name}</p>
-                  <p>{doctor.age} years old</p>
-                  <p>{doctor.experience} experience</p>
-                </div>
-                <div className='doctor-info-right'>
-                  <p>Area of Expertise: {doctor.expertise}</p>
-                  <ul>
-                  <p>Contact:</p>
-                    <li>Phone: {doctor.contact.phone}</li>
-                    <li>Email: {doctor.contact.email}</li>
-                  </ul>
-                </div>
-              </div>
-            )}
-          </div>
-        </motion.div>
-      )}
+      <motion.div
+        className="doctor-container-wrapper"
+        animate={{
+          scale: [0, 1],
+          borderRadius: ["50%", "0%"]
+        }}
+        transition={{
+          duration: 1.5,
+          ease: "easeInOut",
+        }}
+      >
+        <h2>Get In Touch With Our Doctors ~</h2>
+        <div className="expertise-container">
+          {doctors.map((doctor, index) => (
+            <button
+              key={index}
+              className={`expertise-button ${selectedExpertise === doctor.expertise ? 'active' : ''}`}
+              onClick={() => handleExpertiseClick(doctor.expertise)}
+            >
+              {doctor.expertise}
+            </button>
+          ))}
+        </div>
+        
+        {selectedExpertise && (
+          <AnimatePresence>
+            <motion.div
+              key={selectedExpertise}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              // exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.9 }}
+              className='doctor-container'
+            >
+
+              {doctors
+                .filter((doctor) => doctor.expertise === selectedExpertise)
+                .map((doctor, index) => (
+                  <div key={index} className='doctor-info'>
+                    <div className='doctor-info-left'>
+                      <img src={doctor.image} alt='Doctor' />
+                      <p>{doctor.name}</p>
+                      <p>{doctor.age} years old</p>
+                      <p>{doctor.experience} experience</p>
+                    </div>
+                    <div className='doctor-info-right'>
+                      <p>Area of Expertise: {doctor.expertise}</p>
+                      <ul>
+                        <p>Contact:</p>
+                        <li>Phone: {doctor.contact.phone}</li>
+                        <li>Email: {doctor.contact.email}</li>
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+            </motion.div>
+          </AnimatePresence>
+        )}
+      </motion.div>
+      
+
     </div>
   );
 };

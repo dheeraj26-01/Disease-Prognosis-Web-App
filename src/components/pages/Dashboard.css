@@ -166,6 +166,35 @@
   width: 100%;
 }
 
+.expertise-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.expertise-button {
+  padding: 12px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #f8f8f8;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(to right, #000000, #beb64a);
+  transition: all 0.3s ease;
+}
+
+.expertise-button:hover {
+  transform: scale(1.1);
+}
+
+.expertise-button.active {
+  background: black
+}
+
 .doctor-container {
   width: 70%;
   height: 400px;
