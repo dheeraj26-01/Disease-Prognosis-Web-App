@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, app } from "../../firebase.js";
+import { auth } from "../../firebase.js";
 import { getDatabase, ref, onValue } from "firebase/database";
-import { useAnimate, stagger, motion } from "framer-motion"
-// import GoogleMap from './GoogleMap';
+import { motion } from "framer-motion"
+import { GoogleMaps } from '@react-google-maps/api';
+import GoogleMap from './GoogleMap';
 
 
 const doctors = [
@@ -193,8 +194,7 @@ const Dashboard = () => {
         </div>
 
         <div className="maps">
-          maps
-          {/* <GoogleMap /> */}
+          <GoogleMap />
         </div>
       </div>
 
