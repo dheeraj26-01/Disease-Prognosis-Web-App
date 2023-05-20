@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { GoogleMap, Loader, Marker, InfoWindow } from "@googlemaps/js-api-loader"
 
+
 const GoogleMaps = () => {
     useEffect(() => {
         const loadGoogleMaps = async () => {
@@ -17,7 +18,7 @@ const GoogleMaps = () => {
 
                 const { google } = window;
                 const map = new google.maps.Map(document.getElementById('maps'), {
-                    center: { lat: 12.9716, lng: 77.5946 },
+                    center: { lat: 0, lng: 0 },
                     zoom: 16,
                 });
 
@@ -29,6 +30,20 @@ const GoogleMaps = () => {
                             const userLocation = new google.maps.LatLng(latitude, longitude);
                             map.setCenter(userLocation);
 
+                            // Create marker for user's location
+                            const userMarker = new google.maps.Marker({
+                                position: userLocation,
+                                map,
+                                title: 'Here You Are',
+                            });
+
+                            const userInfowindow = new google.maps.InfoWindow({
+                                content: 'My Location',
+                            });
+
+                            userMarker.addListener('click', () => {
+                                userInfowindow.open(map, userMarker);
+                            });
                             // Initialize Places service
                             const service = new google.maps.places.PlacesService(map);
 
@@ -37,7 +52,7 @@ const GoogleMaps = () => {
                                 {
                                     location: userLocation, // Update with user's current location
                                     radius: 5000, // Specify the radius in meters (e.g., 5000 = 5km)
-                                    type: ['hospital', 'clinic'], // Specify the types of places to search
+                                    type: ['hospital', 'clinic', 'health'], // Specify the types of places to search
                                 },
                                 (results, status) => {
                                     if (status === google.maps.places.PlacesServiceStatus.OK) {
