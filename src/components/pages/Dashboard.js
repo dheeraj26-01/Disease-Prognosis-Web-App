@@ -22,7 +22,7 @@ const doctors = [
   },
   {
     name: 'Dr. Maria Garcia',
-    age: 10,
+    age: 30,
     experience: '10 years',
     expertise: 'Gastroenterology',
     contact: {
@@ -77,8 +77,8 @@ const doctors = [
   },
   {
     name: 'Dr. Michael Thompson',
-    age: 48,
-    experience: '18 years',
+    age: 28,
+    experience: '6 years',
     expertise: 'Internal Medicine',
     contact: {
       phone: '123-456-7890',

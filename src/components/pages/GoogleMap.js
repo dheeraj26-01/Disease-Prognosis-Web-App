@@ -35,6 +35,10 @@ const GoogleMaps = () => {
                                 position: userLocation,
                                 map,
                                 title: 'Here You Are',
+                                animation: google.maps.Animation.DROP,
+                                icon: {
+                                    url: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                                },
                             });
 
                             const userInfowindow = new google.maps.InfoWindow({
