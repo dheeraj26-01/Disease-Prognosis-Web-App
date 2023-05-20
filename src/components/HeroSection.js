@@ -8,7 +8,7 @@ import Typewriter from "typewriter-effect";
 function HeroSection() {
   return (
     <div className='hero-container'>
-        <video src='videos/video-3.mp4' autoPlay loop muted />
+        <video src='videos/video-6.mp4' autoPlay loop muted />
         <Fade bottom>
         <h1>Get Checked Up</h1>
         </Fade>
@@ -34,7 +34,7 @@ function HeroSection() {
             </Button> 
 
             <Button className='btns' buttonStyle='btn--primary'
-            buttonSize='btn--large'>Feel Good <i className='far fa-play-circle' />
+            buttonSize='btn--large' href='https://youtu.be/6ajmuRg2o3Q'>Feel Good <i className='far fa-play-circle' />
             </Button> 
         </div>
         </Fade>

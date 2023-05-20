@@ -118,7 +118,7 @@ export default function Register() {
     return (
         <div className='register-page'>
             <div className='register-container'>
-                <video className='register-video' src='videos/video-6.mp4' autoPlay muted loop></video>
+                <video className='register-video' src='videos/video-3.mp4' autoPlay muted loop></video>
                 <div className='register-form-container'>
                     <h2 className='register-header'>Create Account</h2>
                     <form onSubmit={handleLogin} className='register-form'>
@@ -136,9 +136,9 @@ export default function Register() {
                                     Gender:
                                     <select value={gender} onChange={handleGenderChange}>
                                         <option value=''>--Please choose an option--</option>
-                                        <option value='male'>Male</option>
-                                        <option value='female'>Female</option>
-                                        <option value='other'>Other</option>
+                                        <option value='Male'>Male</option>
+                                        <option value='Female'>Female</option>
+                                        <option value='Other'>Other</option>
                                     </select>
                                 </label>
                             </div>

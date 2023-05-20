@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
-// import GoogleMap from './GoogleMap';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from "../../firebase.js";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { motion } from "framer-motion"
+import { GoogleMaps } from '@react-google-maps/api';
+import GoogleMap from './GoogleMap';
 
 
 const doctors = [
@@ -11,20 +16,20 @@ const doctors = [
     expertise: 'Cardiology',
     contact: {
       phone: '123-456-7890',
-      email: 'john.smith@cardiology.com'
+      email: 'john.smith@diagnosio.com'
     },
-    image: 'https://randomuser.me/api/portraits/men/1.jpg'
+    image: 'https://img.freepik.com/free-photo/attractive-young-male-nutriologist-lab-coat-smiling-against-white-background_662251-2960.jpg'
   },
   {
     name: 'Dr. Maria Garcia',
-    age: 40,
+    age: 30,
     experience: '10 years',
     expertise: 'Gastroenterology',
     contact: {
       phone: '123-456-7890',
-      email: 'maria.garcia@gastroenterology.com'
+      email: 'maria.garcia@diagnosio.com'
     },
-    image: 'https://randomuser.me/api/portraits/women/1.jpg'
+    image: 'https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg'
   },
   {
     name: 'Dr. William Lee',
@@ -33,9 +38,9 @@ const doctors = [
     expertise: 'Neurology',
     contact: {
       phone: '123-456-7890',
-      email: 'william.lee@neurology.com'
+      email: 'william.lee@diagnosio.com'
     },
-    image: 'https://randomuser.me/api/portraits/men/2.jpg'
+    image: 'https://img.freepik.com/free-photo/handsome-young-male-doctor-with-stethoscope-standing-against-blue-background_662251-343.jpg'
   },
   {
     name: 'Dr. Elizabeth Brown',
@@ -44,9 +49,9 @@ const doctors = [
     expertise: 'Dermatology',
     contact: {
       phone: '123-456-7890',
-      email: 'elizabeth.brown@dermatology.com'
+      email: 'elizabeth.brown@diagnosio.com'
     },
-    image: 'https://randomuser.me/api/portraits/women/2.jpg'
+    image: 'https://media.istockphoto.com/id/1323303738/photo/medical-doctor-indoors-portraits.jpg?s=170667a&w=0&k=20&c=LoWDLLMsblLcIAzwvUCJEE07am20JkRqAvstUrXLUgw='
   },
   {
     name: 'Dr. David Martinez',
@@ -55,9 +60,64 @@ const doctors = [
     expertise: 'Orthopedics',
     contact: {
       phone: '123-456-7890',
-      email: 'david.martinez@orthopedics.com'
+      email: 'david.martinez@diagnosio.com'
     },
-    image: 'https://randomuser.me/api/portraits/men/3.jpg'
+    image: 'https://t4.ftcdn.net/jpg/03/20/52/31/360_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg'
+  },
+  {
+    name: 'Dr. Sarah Johnson',
+    age: 38,
+    experience: '14 years',
+    expertise: 'Family Medicine',
+    contact: {
+      phone: '123-456-7890',
+      email: 'sarah.johnson@diagnosio.com'
+    },
+    image: 'https://media.npr.org/assets/img/2021/05/20/harihar_vert-0cbe6e9756e62e28bc77d7e61774e17d1455c9e1-s1100-c50.jpg'
+  },
+  {
+    name: 'Dr. Michael Thompson',
+    age: 28,
+    experience: '6 years',
+    expertise: 'Internal Medicine',
+    contact: {
+      phone: '123-456-7890',
+      email: 'michael.thompson@diagnosio.com'
+    },
+    image: 'https://st4.depositphotos.com/1325771/39154/i/600/depositphotos_391545206-stock-photo-happy-male-medical-doctor-portrait.jpg'
+  },
+  {
+    name: 'Dr. Jessica Wilson',
+    age: 41,
+    experience: '13 years',
+    expertise: 'Pediatrics',
+    contact: {
+      phone: '123-456-7890',
+      email: 'jessica.wilson@diagnosio.com'
+    },
+    image: 'https://t3.ftcdn.net/jpg/05/04/25/70/360_F_504257032_jBtwqNdvdMN9Xm6aDT0hcvtxDXPZErrn.jpg'
+  },
+  {
+    name: 'Dr. Christopher Davis',
+    age: 47,
+    experience: '19 years',
+    expertise: 'Ophthalmology',
+    contact: {
+      phone: '123-456-7890',
+      email: 'christopher.davis@diagnosio.com'
+    },
+    image: 'https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?b=1&s=170667a&w=0&k=20&c=vUq0J-LgD4FPEV1Ua_0NeQBcJ2xb8EjGe5fdcR1K2x0='
+  },
+  {
+    name: 'Dr. Emily Anderson',
+    age: 39,
+    experience: '16 years',
+    expertise: 'Psychiatry',
+    contact: {
+      phone: '123-456-7890',
+      email: 'emily.anderson@diagnosio.com'
+    },
+    image: 'https://t4.ftcdn.net/jpg/03/17/85/49/360_F_317854905_2idSdvi2ds3yejmk8mhvxYr1OpdVTrSM.jpg'
   }
 ];
 
@@ -66,27 +126,48 @@ const getRandomDoctor = () => {
   return doctors[randomIndex];
 };
 
+
+
 const Dashboard = () => {
   const [doctor, setDoctor] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const randomDoctor = getRandomDoctor();
     setDoctor(randomDoctor);
+    setSubmitted(true);
   };
+
+  const [user] = useAuthState(auth);
+  const [userDetails, setUserDetails] = useState(null);
+
+  useEffect(() => {
+    const database = getDatabase();
+    if (user) {
+      const userId = user.uid;
+      const userRef = ref(database, `users/${userId}`);
+      onValue(userRef, (snapshot) => {
+        const data = snapshot.val();
+        setUserDetails(data);
+      });
+    }
+  }, [user]);
+
+
 
   return (
     <div className='dashboard'>
       <div className='patient-info-container'>
-      <div className='profile-photo'>
-      <img src='https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=' alt='Patient Profile' />
-      </div>
-      <div className='patient-information'>
-      <p><strong>Name:</strong> John Doe</p>
-      <p><strong>Age:</strong> 35</p>
-      <p><strong>Weight:</strong> 75 kg</p>
-      <p><strong>Gender:</strong> Male</p>
-      </div>
+        <div className='profile-photo'>
+          <img src='https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=' alt='Patient Profile' />
+        </div>
+        <div className='patient-information'>
+          <p><strong>Name:</strong> {userDetails?.firstName} {userDetails?.lastName}</p>
+          <p><strong>Age:</strong> {userDetails?.age}</p>
+          <p><strong>Weight:</strong> {userDetails?.weight} kg</p>
+          <p><strong>Gender:</strong> {userDetails?.gender}</p>
+        </div>
       </div>
 
       <div className='symptoms-form-container'>
@@ -140,40 +221,74 @@ const Dashboard = () => {
             <option value='cough'>Cough</option>
             <option value='shortness-of-breath'>Shortness of breath</option>
           </select>
-
-          <button type='submit'>Submit</button>
+          <motion.button type='submit' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>Submit</motion.button>
         </form>
       </div>
 
+
       <div className='map-container-dashboard'>
-        <h2>Map</h2>
-        <p>Map goes here</p>
-        {/* <GoogleMap /> */}
+        <div className="result">
+          <motion.div
+            className="wrapper"
+            animate={{
+              scale: [0, 1],
+              borderRadius: ["50%", "0%"]
+            }}
+            transition={{
+              duration: 1.5,
+              ease: "easeInOut",
+            }}
+          >
+            <div className="result-wrapper">
+              <h2>Results</h2>
+              <div className="results-content">
+                You have a disease !!
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="maps">
+          <GoogleMap />
+        </div>
       </div>
 
-      <div className='doctor-container'>
-        {doctor && (
-          <div className='doctor-info'>
-            <div className='doctor-info-left'>
-        <img src={doctor.image} alt='Doctor' />
-        <p>{doctor.name}</p>
-        <p>{doctor.age} years old</p>
-        <p>{doctor.experience} experience</p>
-      </div>
-      <div className='doctor-info-right'>
-        <p>Area of Expertise:</p>
-        <p>{doctor.expertise}</p>
-        <p>Contact:</p>
-        <ul>
-          <li>Phone: {doctor.contact.phone}</li>
-          <li>Email: {doctor.contact.email}</li>
-        </ul>
-      </div>
+      {submitted && (
+        <motion.div
+          className="doctor-container-wrapper"
+          animate={{
+            scale: [0, 1],
+            borderRadius: ["50%", "0%"]
+          }}
+          transition={{
+            duration: 1.5,
+            ease: "easeInOut",
+          }}
+        >
+          <h2>Get In Touch With Our Doctors ~</h2>
+          <div className='doctor-container'>
+            {doctor && (
+              <div className='doctor-info'>
+                <div className='doctor-info-left'>
+                  <img src={doctor.image} alt='Doctor' />
+                  <p>{doctor.name}</p>
+                  <p>{doctor.age} years old</p>
+                  <p>{doctor.experience} experience</p>
+                </div>
+                <div className='doctor-info-right'>
+                  <p>Area of Expertise: {doctor.expertise}</p>
+                  <ul>
+                  <p>Contact:</p>
+                    <li>Phone: {doctor.contact.phone}</li>
+                    <li>Email: {doctor.contact.email}</li>
+                  </ul>
+                </div>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-
+        </motion.div>
+      )}
     </div>
   );
-  };
-  export default Dashboard
+};
+export default Dashboard

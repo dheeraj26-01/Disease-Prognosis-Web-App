@@ -11,7 +11,7 @@
   align-items: center;
   width: 45%;
   height: 310px;
-  background-color: #fff;
+  background-color: #f8f8f8;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -36,9 +36,13 @@
   flex: 1;
 }
 
+.patient-information > p{
+  font-weight: 500;
+}
+
 .symptoms-form-container {
   width: 45%;
-  background-color: #fff;
+  background-color: #f8f8f8;
   height: 310px;
   padding: 20px;
   border-radius: 20px;
@@ -78,6 +82,7 @@
 
 .symptoms-form button {
   background-color: #007bff;
+  position: relative;
   color: #fff;
   margin-top: 20px;
   border: none;
@@ -86,6 +91,7 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
 .symptoms-form button:hover {
   background-color: #005ae6;
 }
@@ -93,19 +99,76 @@
 .map-container-dashboard {
   width: 100%;
   height: 400px;
-  background-color: #fff;
-  padding: 20px;
+  background-color: #f8f8f8;
+  /* padding: 20px; */
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: center;
   align-items: center;
+}
+
+.result{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(254, 247, 239);
+}
+
+.wrapper{
+  /* background: linear-gradient(90deg, #FDBB2D 0%, #3A1C71 100%); */
+  /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
+  /* background: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%); */
+  /* background: linear-gradient(to right, #ffa17f, #00223e); */
+  background: linear-gradient(to right, #050c19, #00223e);
+  width: 100%;
+  height: 100%;
+}
+
+.result-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+.result-wrapper > h2{
+  color: aliceblue;
+  font-family: cursive;
+  font-style: italic;
+}
+
+.results-content{
+  width: 80%;
+  height: auto;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #f8f8f8;
+  border-radius: 1.5rem;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  line-height: 1.8;
+  font-size: 1.2rem;
+  color: #555;
+  text-align: center;
+  justify-content: center;
+}
+
+#maps{
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.maps{
+  display: flex;
+  width: 100%;
 }
 
 .doctor-container {
   width: 70%;
   height: 400px;
-  background: linear-gradient(to right, #56CCF2, #2F80ED);
+  background: linear-gradient(to right, #f5e0b7, #000000);
   padding: 40px;
   margin: 20px auto;
   border-radius: 20px;
@@ -114,6 +177,59 @@
   justify-content: center;
   align-items: center;
 }
+
+.doctor-container-wrapper{
+  width: 80%;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  margin: 5px auto;
+}
+
+@media screen and (max-width: 990px) {
+  .doctor-container {
+  width: 90%;
+  height: auto;
+  flex-direction: column;
+  padding: 20px;
+  }
+
+  .doctor-info {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+    
+    .doctor-info img {
+    width: 120px;
+    height: 120px;
+    margin-right: 0;
+    margin-bottom: 10px;
+    align-items: center;
+    }
+    
+    .doctor-info-left {
+    /* padding-right: 0; */
+    margin-bottom: 10px;
+    text-align: center;
+    }
+    
+    .doctor-info-right {
+    align-items: center;
+    text-align: center;
+    }
+    
+    .doctor-info p {
+    font-size: 16px;
+    line-height: 22px;
+    }
+    
+    .doctor-info ul li {
+    font-size: 14px;
+    line-height: 24px;
+    }
+  }
 
 .doctor-info {
   display: flex;
@@ -126,14 +242,16 @@
   justify-content: center;
   align-items: center;
   padding-right: 30px;
+  font-weight: 900;
 }
 
 .doctor-info-right {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   color: #fff;
+  font-weight: 800;
 }
 
 .doctor-info img {
@@ -142,22 +260,25 @@
   border-radius: 50%;
   object-fit: cover;
   margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .doctor-info p {
   margin: 0;
   font-size: 18px;
-  line-height: 24px;
+  /* line-height: 25px; */
 }
 
 .doctor-info ul {
-  margin: 0;
-  padding: 0;
+  /* margin: 0; */
+  padding: 5% 10% 0 0;
   list-style: none;
+  margin-top: 5%;
+
 }
 
 .doctor-info ul li {
   font-size: 16px;
-  line-height: 20px;
+  line-height: 30px;
   margin-bottom: 5px;
 }

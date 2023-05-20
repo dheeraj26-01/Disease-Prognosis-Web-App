@@ -1,86 +1,134 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect } from 'react';
+import { GoogleMap, Loader, Marker, InfoWindow } from "@googlemaps/js-api-loader"
 
-// function GoogleMap() {
-//   const [map, setMap] = useState(null);
 
-//   useEffect(() => {
-//     if (!window.google) {
-//       const script = document.createElement("script");
-//       script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.AIzaSyA9xvF5Bwoje9eQolevrzG28Fqegbd_Yik}&libraries=places`;
-//       script.onload = initMap;
-//       document.head.appendChild(script);
-//     } else {
-//       initMap();
-//     }
-//   }, []);
+const GoogleMaps = () => {
+    useEffect(() => {
+        const loadGoogleMaps = async () => {
+            const loader = new Loader({
+                apiKey: 'AIzaSyAhj2VjaWW980pxbqs2q3mNKI7tDBtRXW4',
+                version: 'weekly',
+                // ...additionalOptions
+            });
 
-//   function initMap() {
-//     const google = window.google;
+            try {
+                if (!window.google || !window.google.maps) {
+                    await loader.load();
+                }
 
-//     const map = new google.maps.Map(document.getElementById("map"), {
-//       center: { lat: 37.7749, lng: -122.4194 },
-//       zoom: 13,
-//     });
+                const { google } = window;
+                const map = new google.maps.Map(document.getElementById('maps'), {
+                    center: { lat: 0, lng: 0 },
+                    zoom: 16,
+                });
 
-//     const infoWindow = new google.maps.InfoWindow();
-//     const service = new google.maps.places.PlacesService(map);
+                // Get user's current location
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            const { latitude, longitude } = position.coords;
+                            const userLocation = new google.maps.LatLng(latitude, longitude);
+                            map.setCenter(userLocation);
 
-//     if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition(
-//         (position) => {
-//           const { latitude, longitude } = position.coords;
-//           const location = new google.maps.LatLng(latitude, longitude);
+                            // Create marker for user's location
+                            const userMarker = new google.maps.Marker({
+                                position: userLocation,
+                                map,
+                                title: 'Here You Are',
+                                animation: google.maps.Animation.DROP,
+                                icon: {
+                                    url: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                                },
+                            });
 
-//           const request = {
-//             location,
-//             radius: 5000,
-//             type: ["hospital"],
-//           };
+                            const userInfowindow = new google.maps.InfoWindow({
+                                content: 'My Location',
+                            });
 
-//           service.nearbySearch(request, (results, status) => {
-//             if (status === google.maps.places.PlacesServiceStatus.OK) {
-//               for (let i = 0; i < results.length; i++) {
-//                 createMarker(results[i]);
-//               }
-//             }
-//           });
+                            userMarker.addListener('click', () => {
+                                userInfowindow.open(map, userMarker);
+                            });
 
-//           map.setCenter(location);
-//         },
-//         () => {
-//           handleLocationError(true, infoWindow, map.getCenter());
-//         }
-//       );
-//     } else {
-//       handleLocationError(false, infoWindow, map.getCenter());
-//     }
+                            // Initialize Places service
+                            const service = new google.maps.places.PlacesService(map);
 
-//     function createMarker(place) {
-//       const marker = new google.maps.Marker({
-//         map,
-//         position: place.geometry.location,
-//       });
+                            // Use Places service to search for medical clinics and hospitals
+                            service.nearbySearch(
+                                {
+                                    location: userLocation, // Update with user's current location
+                                    radius: 5000, // Specify the radius in meters (e.g., 5000 = 5km)
+                                    type: ['hospital'] // Specify the types of places to search
+                                },
+                                (results, status) => {
+                                    if (status === google.maps.places.PlacesServiceStatus.OK) {
+                                        // Process the search results
+                                        for (let i = 0; i < results.length; i++) {
+                                            createMarker(results[i]);
+                                        }
+                                    }
+                                }
+                            );
+                            // const doc = new google.maps.places.PlacesService(map);
 
-//       google.maps.event.addListener(marker, "click", () => {
-//         infoWindow.setContent(place.name);
-//         infoWindow.open(map, marker);
-//       });
-//     }
+                            // // Use Places service to search for medical clinics and hospitals
+                            // doc.nearbySearch(
+                            //     {
+                            //         location: userLocation, // Update with user's current location
+                            //         radius: 5000, // Specify the radius in meters (e.g., 5000 = 5km)
+                            //         type: ['supermarket'] // Specify the types of places to search
+                            //     },
+                            //     (results, status) => {
+                            //         if (status === google.maps.places.PlacesServiceStatus.OK) {
+                            //             // Process the search results
+                            //             for (let i = 0; i < results.length; i++) {
+                            //                 createMarker(results[i]);
+                            //             }
+                            //         }
+                            //     }
+                            // );
+                        },
+                        (error) => {
+                            console.error('Error getting user location:', error);
+                        }
+                    );
+                } else {
+                    console.error('Geolocation is not supported by this browser.');
+                }
 
-//     function handleLocationError(browserHasGeolocation, infoWindow, location) {
-//       infoWindow.setPosition(location);
-//       infoWindow.setContent(
-//         browserHasGeolocation
-//           ? "Error: The Geolocation service failed."
-//           : "Error: Your browser doesn't support geolocation."
-//       );
-//       infoWindow.open(map);
-//     }
+                const createMarker = (place) => {
+                    const marker = new google.maps.Marker({
+                        map,
+                        position: place.geometry.location,
+                    });
 
-//     setMap(map);
-//   }
+                    const Infowindow = new google.maps.InfoWindow({
+                        content: place.name,
+                    });
 
-//   return <div id="map" style={{ height: "500px" }}></div>;
-// }
+                    marker.addListener('click', () => {
+                        Infowindow.open(map, marker);
+                    });
+                };
+            } catch (error) {
+                console.error('Error loading Google Maps:', error);
+            }
+        };
 
-// export default GoogleMap;
+        // Load the Google Maps script
+        if (window.google && window.google.maps) {
+            loadGoogleMaps();
+        } else {
+            // Load the Google Maps API asynchronously
+            window.initMap = loadGoogleMaps;
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAhj2VjaWW980pxbqs2q3mNKI7tDBtRXW4&libraries=places&callback=initMap`;
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+        }
+    }, []);
+
+    return <div id="maps" style={{ height: '51vh' }}></div>;
+};
+
+export default GoogleMaps;

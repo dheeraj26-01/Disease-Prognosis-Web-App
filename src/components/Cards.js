@@ -8,7 +8,7 @@ function Cards() {
     return (
         <div className='cards'>
             <Fade bottom>
-                <h1>What Do People Have To Say?</h1>
+                <h1>Revitalize Your Life: Embrace the Power of Health and Unleash Your True Potential</h1>
             </Fade>
             <div className='cards__container'>
                 <div className='cards__wrapper'>
