@@ -16,20 +16,20 @@ const doctors = [
     expertise: 'Cardiology',
     contact: {
       phone: '123-456-7890',
-      email: 'john.smith@cardiology.com'
+      email: 'john.smith@diagnosio.com'
     },
-    image: 'https://randomuser.me/api/portraits/men/1.jpg'
+    image: 'https://img.freepik.com/free-photo/attractive-young-male-nutriologist-lab-coat-smiling-against-white-background_662251-2960.jpg'
   },
   {
     name: 'Dr. Maria Garcia',
-    age: 40,
+    age: 10,
     experience: '10 years',
     expertise: 'Gastroenterology',
     contact: {
       phone: '123-456-7890',
-      email: 'maria.garcia@gastroenterology.com'
+      email: 'maria.garcia@diagnosio.com'
     },
-    image: 'https://randomuser.me/api/portraits/women/1.jpg'
+    image: 'https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg'
   },
   {
     name: 'Dr. William Lee',
@@ -38,9 +38,9 @@ const doctors = [
     expertise: 'Neurology',
     contact: {
       phone: '123-456-7890',
-      email: 'william.lee@neurology.com'
+      email: 'william.lee@diagnosio.com'
     },
-    image: 'https://randomuser.me/api/portraits/men/2.jpg'
+    image: 'https://img.freepik.com/free-photo/handsome-young-male-doctor-with-stethoscope-standing-against-blue-background_662251-343.jpg'
   },
   {
     name: 'Dr. Elizabeth Brown',
@@ -49,9 +49,9 @@ const doctors = [
     expertise: 'Dermatology',
     contact: {
       phone: '123-456-7890',
-      email: 'elizabeth.brown@dermatology.com'
+      email: 'elizabeth.brown@diagnosio.com'
     },
-    image: 'https://randomuser.me/api/portraits/women/2.jpg'
+    image: 'https://media.istockphoto.com/id/1323303738/photo/medical-doctor-indoors-portraits.jpg?s=170667a&w=0&k=20&c=LoWDLLMsblLcIAzwvUCJEE07am20JkRqAvstUrXLUgw='
   },
   {
     name: 'Dr. David Martinez',
@@ -60,9 +60,64 @@ const doctors = [
     expertise: 'Orthopedics',
     contact: {
       phone: '123-456-7890',
-      email: 'david.martinez@orthopedics.com'
+      email: 'david.martinez@diagnosio.com'
     },
-    image: 'https://randomuser.me/api/portraits/men/3.jpg'
+    image: 'https://t4.ftcdn.net/jpg/03/20/52/31/360_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg'
+  },
+  {
+    name: 'Dr. Sarah Johnson',
+    age: 38,
+    experience: '14 years',
+    expertise: 'Family Medicine',
+    contact: {
+      phone: '123-456-7890',
+      email: 'sarah.johnson@diagnosio.com'
+    },
+    image: 'https://media.npr.org/assets/img/2021/05/20/harihar_vert-0cbe6e9756e62e28bc77d7e61774e17d1455c9e1-s1100-c50.jpg'
+  },
+  {
+    name: 'Dr. Michael Thompson',
+    age: 48,
+    experience: '18 years',
+    expertise: 'Internal Medicine',
+    contact: {
+      phone: '123-456-7890',
+      email: 'michael.thompson@diagnosio.com'
+    },
+    image: 'https://st4.depositphotos.com/1325771/39154/i/600/depositphotos_391545206-stock-photo-happy-male-medical-doctor-portrait.jpg'
+  },
+  {
+    name: 'Dr. Jessica Wilson',
+    age: 41,
+    experience: '13 years',
+    expertise: 'Pediatrics',
+    contact: {
+      phone: '123-456-7890',
+      email: 'jessica.wilson@diagnosio.com'
+    },
+    image: 'https://t3.ftcdn.net/jpg/05/04/25/70/360_F_504257032_jBtwqNdvdMN9Xm6aDT0hcvtxDXPZErrn.jpg'
+  },
+  {
+    name: 'Dr. Christopher Davis',
+    age: 47,
+    experience: '19 years',
+    expertise: 'Ophthalmology',
+    contact: {
+      phone: '123-456-7890',
+      email: 'christopher.davis@diagnosio.com'
+    },
+    image: 'https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?b=1&s=170667a&w=0&k=20&c=vUq0J-LgD4FPEV1Ua_0NeQBcJ2xb8EjGe5fdcR1K2x0='
+  },
+  {
+    name: 'Dr. Emily Anderson',
+    age: 39,
+    experience: '16 years',
+    expertise: 'Psychiatry',
+    contact: {
+      phone: '123-456-7890',
+      email: 'emily.anderson@diagnosio.com'
+    },
+    image: 'https://t4.ftcdn.net/jpg/03/17/85/49/360_F_317854905_2idSdvi2ds3yejmk8mhvxYr1OpdVTrSM.jpg'
   }
 ];
 
