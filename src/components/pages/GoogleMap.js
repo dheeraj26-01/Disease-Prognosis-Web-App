@@ -44,6 +44,7 @@ const GoogleMaps = () => {
                             userMarker.addListener('click', () => {
                                 userInfowindow.open(map, userMarker);
                             });
+
                             // Initialize Places service
                             const service = new google.maps.places.PlacesService(map);
 
@@ -52,7 +53,7 @@ const GoogleMaps = () => {
                                 {
                                     location: userLocation, // Update with user's current location
                                     radius: 5000, // Specify the radius in meters (e.g., 5000 = 5km)
-                                    type: ['hospital', 'clinic', 'health'], // Specify the types of places to search
+                                    type: ['hospital'] // Specify the types of places to search
                                 },
                                 (results, status) => {
                                     if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -63,6 +64,24 @@ const GoogleMaps = () => {
                                     }
                                 }
                             );
+                            // const doc = new google.maps.places.PlacesService(map);
+
+                            // // Use Places service to search for medical clinics and hospitals
+                            // doc.nearbySearch(
+                            //     {
+                            //         location: userLocation, // Update with user's current location
+                            //         radius: 5000, // Specify the radius in meters (e.g., 5000 = 5km)
+                            //         type: ['supermarket'] // Specify the types of places to search
+                            //     },
+                            //     (results, status) => {
+                            //         if (status === google.maps.places.PlacesServiceStatus.OK) {
+                            //             // Process the search results
+                            //             for (let i = 0; i < results.length; i++) {
+                            //                 createMarker(results[i]);
+                            //             }
+                            //         }
+                            //     }
+                            // );
                         },
                         (error) => {
                             console.error('Error getting user location:', error);
