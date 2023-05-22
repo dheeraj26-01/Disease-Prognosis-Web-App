@@ -6,6 +6,8 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import { motion, AnimatePresence } from "framer-motion"
 import GoogleMap from './GoogleMap';
 
+import axios from 'axios';
+
 
 const doctors = [
   {
@@ -125,8 +127,61 @@ const doctors = [
 const Dashboard = () => {
   const [selectedExpertise, setSelectedExpertise] = useState(null);
 
+  const [selectedOptions, setSelectedOptions] = useState({});
+  const [responseData, setResponseData] = useState(null);
+
+  const options = [
+    'itching', 'skin_rash', 'nodal_skin_eruptions', 'continuous_sneezing', 'shivering', 'chills', 'joint_pain',
+      'stomach_pain', 'acidity', 'ulcers_on_tongue', 'muscle_wasting', 'vomiting', 'burning_micturition', 'spotting_ urination', 'fatigue',
+      'weight_gain', 'anxiety', 'cold_hands_and_feets', 'mood_swings', 'weight_loss', 'restlessness', 'lethargy', 'patches_in_throat',
+      'irregular_sugar_level', 'cough', 'high_fever', 'sunken_eyes', 'breathlessness', 'sweating', 'dehydration', 'indigestion',
+      'headache', 'yellowish_skin', 'dark_urine', 'nausea', 'loss_of_appetite', 'pain_behind_the_eyes', 'back_pain', 'constipation',
+      'abdominal_pain', 'diarrhoea', 'mild_fever', 'yellow_urine', 'yellowing_of_eyes', 'acute_liver_failure', 'fluid_overload',
+      'swelling_of_stomach', 'swelled_lymph_nodes', 'malaise', 'blurred_and_distorted_vision', 'phlegm', 'throat_irritation',
+      'redness_of_eyes', 'sinus_pressure', 'runny_nose', 'congestion', 'chest_pain', 'weakness_in_limbs', 'fast_heart_rate',
+      'pain_during_bowel_movements', 'pain_in_anal_region', 'bloody_stool', 'irritation_in_anus', 'neck_pain', 'dizziness', 'cramps',
+      'bruising', 'obesity', 'swollen_legs', 'swollen_blood_vessels', 'puffy_face_and_eyes', 'enlarged_thyroid', 'brittle_nails',
+      'swollen_extremeties', 'excessive_hunger', 'extra_marital_contacts', 'drying_and_tingling_lips', 'slurred_speech', 'knee_pain', 'hip_joint_pain',
+      'muscle_weakness', 'stiff_neck', 'swelling_joints', 'movement_stiffness', 'spinning_movements', 'loss_of_balance', 'unsteadiness', 'weakness_of_one_body_side',
+      'loss_of_smell', 'bladder_discomfort', 'foul_smell_of urine', 'continuous_feel_of_urine', 'passage_of_gases', 'internal_itching', 'toxic_look_(typhos)',
+      'depression', 'irritability', 'muscle_pain', 'altered_sensorium', 'red_spots_over_body', 'belly_pain', 'abnormal_menstruation', 'dischromic _patches',
+      'watering_from_eyes', 'increased_appetite', 'polyuria', 'family_history', 'mucoid_sputum', 'rusty_sputum', 'lack_of_concentration', 'visual_disturbances',
+      'receiving_blood_transfusion', 'receiving_unsterile_injections', 'coma', 'stomach_bleeding', 'distention_of_abdomen', 'history_of_alcohol_consumption',
+      'fluid_overload', 'blood_in_sputum', 'prominent_veins_on_calf', 'palpitations', 'painful_walking', 'pus_filled_pimples', 'blackheads', 'scurring', 'skin_peeling',
+      'silver_like_dusting', 'small_dents_in_nails', 'inflammatory_nails', 'blister', 'red_sore_around_nose', 'yellow_crust_ooze'
+  ];
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setSelectedOptions(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Create the payload object with the selected options
+    const payload = selectedOptions;
+    console.log(payload);
+
+    const headers = {
+      'Content-Type': 'multipart/form-data',
+      // Add other headers if required
+    };
+
+    // Send the Axios request
+    axios.post('http://127.0.0.1:5000/predict', payload,  { headers })
+      .then(response => {
+        // Process the response data
+        console.log(response.data);
+        setResponseData(response.data);
+      })
+      .catch(error => {
+        // Handle any errors
+        console.error(error);
+      });
   };
 
   const handleExpertiseClick = (expertise) => {
@@ -149,9 +204,6 @@ const Dashboard = () => {
     }
   }, [user]);
 
-
-
-
   return (
     <div className='dashboard'>
       <div className='patient-info-container'>
@@ -167,57 +219,42 @@ const Dashboard = () => {
       </div>
 
       <div className='symptoms-form-container'>
-        <form className='symptoms-form' onSubmit={handleSubmit}>
+        <form className='symptoms-form' onSubmit={handleSubmit} >
           <label htmlFor='symptom1'>Symptom 1:</label>
-          <select id='symptom1' name='symptom1'>
-            <option value=''>None</option>
-            <option value='headache'>Headache</option>
-            <option value='fatigue'>Fatigue</option>
-            <option value='fever'>Fever</option>
-            <option value='cough'>Cough</option>
-            <option value='shortness-of-breath'>Shortness of breath</option>
+          <select id='s1' name='s1' value={selectedOptions.s1 || ''} onChange={handleChange}>
+            {options.map(option => (
+              <option key={option} value={option}>{option}</option>
+            ))}
           </select>
 
           <label htmlFor='symptom2'>Symptom 2:</label>
-          <select id='symptom2' name='symptom2'>
-            <option value=''>None</option>
-            <option value='headache'>Headache</option>
-            <option value='fatigue'>Fatigue</option>
-            <option value='fever'>Fever</option>
-            <option value='cough'>Cough</option>
-            <option value='shortness-of-breath'>Shortness of breath</option>
+          <select id='s2' name='s2' value={selectedOptions.s2 || ''} onChange={handleChange}>
+            {options.map(option => (
+              <option key={option} value={option}>{option}</option>
+            ))}
           </select>
 
           <label htmlFor='symptom3'>Symptom 3:</label>
-          <select id='symptom3' name='symptom3'>
-            <option value=''>None</option>
-            <option value='headache'>Headache</option>
-            <option value='fatigue'>Fatigue</option>
-            <option value='fever'>Fever</option>
-            <option value='cough'>Cough</option>
-            <option value='shortness-of-breath'>Shortness of breath</option>
+          <select id='s3' name='s3' value={selectedOptions.s3 || ''} onChange={handleChange}>
+          {options.map(option => (
+              <option key={option} value={option}>{option}</option>
+            ))}
           </select>
 
           <label htmlFor='symptom4'>Symptom 4:</label>
-          <select id='symptom4' name='symptom4'>
-            <option value=''>None</option>
-            <option value='headache'>Headache</option>
-            <option value='fatigue'>Fatigue</option>
-            <option value='fever'>Fever</option>
-            <option value='cough'>Cough</option>
-            <option value='shortness-of-breath'>Shortness of breath</option>
+          <select id='s4' name='s4' value={selectedOptions.s4 || ''} onChange={handleChange}>
+          {options.map(option => (
+              <option key={option} value={option}>{option}</option>
+            ))}
           </select>
 
           <label htmlFor='symptom5'>Symptom 5:</label>
-          <select id='symptom5' name='symptom5'>
-            <option value=''>None</option>
-            <option value='headache'>Headache</option>
-            <option value='fatigue'>Fatigue</option>
-            <option value='fever'>Fever</option>
-            <option value='cough'>Cough</option>
-            <option value='shortness-of-breath'>Shortness of breath</option>
+          <select id='s5' name='s5' value={selectedOptions.s5 || ''} onChange={handleChange}>
+          {options.map(option => (
+              <option key={option} value={option}>{option}</option>
+            ))}
           </select>
-          <motion.button type='submit' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>Submit</motion.button>
+          <motion.button type='submit' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>Predict</motion.button>
         </form>
       </div>
 
@@ -236,9 +273,14 @@ const Dashboard = () => {
             }}
           >
             <div className="result-wrapper">
-              <h2>Results</h2>
+              <h2>RESULTS</h2>
               <div className="results-content">
-                You have a disease !!
+                {/* You have a disease !! */}
+                {responseData && (
+                  <div>
+                    <pre>{JSON.stringify(responseData, null, 2)}</pre>
+                  </div>
+                )}
               </div>
             </div>
           </motion.div>
